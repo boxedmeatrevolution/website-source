@@ -79,6 +79,8 @@ const games_html = games.map(function (game) {
     // must be embedded into the page.
     let view = { 'game': game };
     if (game.web_folder != null) {
+        // TODO: Merge `index.html` correctly with the `game_template`, by
+        // merging the `head`, `body`, etc. indivdually.
         const embedded_file_path = path.join(
             './data/',
             path.join(
