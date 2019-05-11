@@ -29,15 +29,23 @@ function copyFolderRecursiveSync(source, target) {
         });
     }
     else {
-        throw JSON.stringify(source) + " is not a directory.";
+        throw JSON.stringify(source) + ' is not a directory.';
     }
 }
 
 // Load command line arguments.
 if (process.argv.length !== 3) {
-    throw "Unexpected number of command line arguments (expected 1).";
+    throw 'Unexpected number of command line arguments (expected 1).';
 }
 build_dir = process.argv[2];
+
+// Test that build directory exists and is empty.
+if (!fs.existsSync(build_dir)) {
+    throw 'Build directory does not exist.';
+}
+if (fs.readdirSync(build_dir).length != 0) {
+    console.log(`Build directory is not empty. Perhaps you should clean first with \`node clean ${build_dir}\`?`);
+}
 
 // Read the template file.
 const wrapper_template = fs.readFileSync('./template.html', 'utf8');
