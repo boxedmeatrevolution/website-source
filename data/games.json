@@ -12,7 +12,7 @@
         {
             "platform": "mac",
             "file": "spacebank-heist.??"
-        },
+        }
     ],
     "jam": "Ludum Dare ??",
     "theme": "One-screen ??",
@@ -57,3 +57,4 @@
     "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor"]
   }
 ]
+
