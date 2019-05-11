@@ -2,7 +2,7 @@
   {
     "id": "duane-byer",
     "name": "Duane Byer",
-    "portrait", "duane-byer.png",
+    "portrait": "duane-byer.png",
     "about": "",
     "github": "https://github.com/duanebyer/"
   },
@@ -28,3 +28,4 @@
     "github": ""
   }
 ]
+
