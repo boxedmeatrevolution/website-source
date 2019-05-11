@@ -77,7 +77,7 @@ about_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', abo
 const games_html = games.map(function (game) {
     // This is a little more complicated: if a web distribution exists, then it
     // must be embedded into the page.
-    let view = { 'game': game };
+    let game_data = { 'game': game };
     if (game.web_folder != null) {
         // TODO: Merge `index.html` correctly with the `game_template`, by
         // merging the `head`, `body`, etc. indivdually.
@@ -87,9 +87,9 @@ const games_html = games.map(function (game) {
                 game.web_folder,
                 './index.html'));
         const embedded_html = fs.readFileSync(embedded_file_path, 'utf8');
-        view.embedded = embedded_html;
+        game_data.embedded = embedded_html;
     }
-    let game_html = mustache.render(game_template, view);
+    let game_html = mustache.render(game_template, game_data);
     game_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', game_html));
     return game_html;
 });
