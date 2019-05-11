@@ -1,0 +1,59 @@
+[
+  {
+    "id": "spacebank-heist",
+    "name": "Spacebank Heist",
+    "about": "",
+    "web_folder": null,
+    "downloads": [
+        {
+            "platform": "windows",
+            "file": "spacebank-heist.zip"
+        },
+        {
+            "platform": "mac",
+            "file": "spacebank-heist.??"
+        },
+    ],
+    "jam": "Ludum Dare ??",
+    "theme": "One-screen ??",
+    "date": "??",
+    "source": "https://github.com/boxed-meat-revolution/spacebank-heist",
+    "language": "Game Maker",
+    "developers": ["Duane Byer", "Aidan Mahler", "George Shen", "Stacy Woods"]
+  },
+  {
+    "id": "one-button-wizard",
+    "name": "One Button Wizard",
+    "about": "",
+    "web_folder": "one-button-wizard/",
+    "downloads": [],
+    "jam": "Ludum Dare ??",
+    "theme": "One button ??",
+    "date": "??",
+    "source": "https://github.com/boxed-meat-revolution/one-button-wizard",
+    "language": "Processing JS",
+    "developers": ["Duane Byer", "Aidan Mahler", "George Shen", "Stacy Woods"]
+  },
+  {
+    "id": "dr-ectomy",
+    "name": "Dr. Ectomy",
+    "about": "",
+    "web_folder": "dr-ectomy/",
+    "downloads": [
+        {
+            "platform": "windows",
+            "file": "dr-ectomy.zip"
+        },
+        {
+            "platform": "mac",
+            "file": "dr-ectomy.???"
+        }
+    ],
+    "jam": "Ludum Dare ??",
+    "theme": "Your life is your currency",
+    "date": "??",
+    "source": "https//github.com/boxed-meat-revolution/dr-ectomy",
+    "language": "Unity",
+    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor"]
+  }
+]

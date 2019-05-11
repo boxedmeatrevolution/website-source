@@ -1,0 +1,30 @@
+[
+  {
+    "id": "duane-byer",
+    "name": "Duane Byer",
+    "portrait", "duane-byer.png",
+    "about": "",
+    "github": "https://github.com/duanebyer/"
+  },
+  {
+    "id": "aidan-mahler",
+    "name": "Aidan Mahler",
+    "portrait": "aidan-mahler.png",
+    "about": "",
+    "github": ""
+  },
+  {
+    "id": "nikole-mcgregor",
+    "name": "Nikole McGregor",
+    "portrait": "nikole-mcgregor.png",
+    "about": "",
+    "website": ""
+  },
+  {
+    "id": "george-shen",
+    "name": "George Shen",
+    "portrait": "george-shen.png",
+    "about": "",
+    "github": ""
+  }
+]

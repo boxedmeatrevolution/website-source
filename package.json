@@ -1,0 +1,16 @@
+{
+  "name": "boxed_meat_revolution",
+  "version": "0.0.0",
+  "description": "Website for Boxed Meat Revolution.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "mustache": "~3.0.0",
+    "path": "~0.12.7"
+  },
+  "author": "Duane Byer",
+  "license": "UNLICENSED"
+}
