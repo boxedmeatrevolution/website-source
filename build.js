@@ -82,7 +82,7 @@ const games_html = games.map(function (game) {
         // TODO: Merge `index.html` correctly with the `game_template`, by
         // merging the `head`, `body`, etc. indivdually.
         const embedded_file_path = path.join(
-            './data/',
+            './games/',
             path.join(
                 game.web_folder,
                 './index.html'));
@@ -106,7 +106,7 @@ games.forEach(function (game, index) {
     // For each game, if there is a web distribution, then the whole folder must
     // be copied to the final website.
     if (game.web_folder != null) {
-        const source_folder = path.join('./data/', game.web_folder);
+        const source_folder = path.join('./games/', game.web_folder);
         copyFileRecursive(source_folder, target_folder);
     }
     // The game page must be written to the build directory.
