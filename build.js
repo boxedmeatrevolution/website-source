@@ -51,15 +51,17 @@ try {
     developers = JSON.parse(developers);
 }
 catch (error) {
-    error.fileName = 'developers.json';
-    throw error;
+    const fileName = 'developers.json';
+    const message = error.message;
+    throw `Error parsing ${fileName}: ${message}`;
 }
 try {
     games = JSON.parse(games);
 }
 catch (error) {
-    error.fileName = 'games.json';
-    throw error;
+    const fileName = 'games.json';
+    const message = error.message;
+    throw `Error parsing ${fileName}: ${message}`;
 }
 
 // Use substitutions to build the pages.
