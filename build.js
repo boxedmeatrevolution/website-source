@@ -13,15 +13,18 @@ function addProp(obj, key, val) {
 
 function copyFolderRecursiveSync(source, target) {
     let target_folder = path.join(target, path.basename(source));
-    fs.mkdirSync(target_folder);
+    if (!fs.existsSync(target_folder)) {
+        fs.mkdirSync(target_folder);
+    }
     if (fs.lstatSync(source).isDirectory()) {
         fs.readdirSync(source).forEach(function (file) {
             const current_source = path.join(source, file);
+            const current_target = path.join(target_folder, file);
             if (fs.lstatSync(current_source).isDirectory()) {
-                copyFolderRecursiveSync(current_source, target_folder);
+                copyFolderRecursiveSync(current_source, current_target);
             }
             else {
-                copyFileSync(current_source, target_folder);
+                fs.copyFileSync(current_source, current_target);
             }
         });
     }
@@ -97,20 +100,24 @@ const games_html = games.map(function (game) {
 // Save the final pages to the build directory.
 fs.writeFileSync(path.join(build_dir, 'index.html'), index_html, 'utf8');
 fs.writeFileSync(path.join(build_dir, 'about.html'), about_html, 'utf8');
+const games_folder = path.join(build_dir, './games/');
+if (!fs.existsSync(games_folder)) {
+    fs.mkdirSync(games_folder);
+}
 games.forEach(function (game, index) {
-    // Create folder for game if it doesn't already exist.
-    const target_folder = path.join(build_dir, path.join('./games/', game.id));
-    if (!fs.existsSync(target_folder)) {
-        fs.mkdirSync(target_folder);
-    }
     // For each game, if there is a web distribution, then the whole folder must
     // be copied to the final website.
     if (game.web_folder != null) {
-        const source_folder = path.join('./games/', game.web_folder);
-        copyFileRecursive(source_folder, target_folder);
+        const source_game_folder = path.join('./games/', game.web_folder);
+        copyFolderRecursiveSync(source_game_folder, games_folder);
+    }
+    const game_folder = path.join(games_folder, game.id);
+    // Create folder for game if it doesn't already exist.
+    if (!fs.existsSync(game_folder)) {
+        fs.mkdirSync(game_folder);
     }
     // The game page must be written to the build directory.
-    fs.writeFileSync(path.join(target_folder, game.id + '.html'), games_html[index], 'utf8');
+    fs.writeFileSync(path.join(game_folder, game.id + '.html'), games_html[index], 'utf8');
 });
 
 // Copy pictures and styles to the build directory.
