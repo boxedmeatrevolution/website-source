@@ -37,12 +37,12 @@ if (process.argv.length !== 3) {
 build_dir = process.argv[2];
 
 // Read the template file.
-const template_html = fs.readFileSync('./template.html', 'utf8');
+const wrapper_template = fs.readFileSync('./template.html', 'utf8');
 
 // Read the pages.
 let index_html = fs.readFileSync('./pages/index.html', 'utf8');
-let about_html = fs.readFileSync('./pages/about.html', 'utf8');
-let game_html = fs.readFileSync('./pages/game.html', 'utf8');
+let about_template = fs.readFileSync('./pages/about.html', 'utf8');
+let game_template = fs.readFileSync('./pages/game.html', 'utf8');
 
 // Read the data which will populate the pages.
 let developers = fs.readFileSync('./data/developers.json', 'utf8');
@@ -65,14 +65,14 @@ catch (error) {
 }
 
 // Use substitutions to build the pages.
-let template_data = {
+let wrapper_data = {
     'body': '',
     'developers': developers,
     'games': games
 };
-index_html = mustache.render(template_html, addProp(template_data, 'body', index_html));
-about_html = mustache.render(about_html, { 'developers': developers });
-about_html = mustache.render(template_html, addProp(template_data, 'body', about_html));
+index_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', index_html));
+let about_html = mustache.render(about_template, { 'developers': developers });
+about_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', about_html));
 // Loop through all games to make a different page for each game.
 const games_html = games.map(function (game) {
     // This is a little more complicated: if a web distribution exists, then it
@@ -87,8 +87,8 @@ const games_html = games.map(function (game) {
         const embedded_html = fs.readFileSync(embedded_file_path, 'utf8');
         view.embedded = embedded_html;
     }
-    let game_html = mustache.render(game_html, view);
-    game_html = mustache.render(template_html, addProp(template_data, 'body', game_html));
+    let game_html = mustache.render(game_template, view);
+    game_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', game_html));
     return game_html;
 });
 
