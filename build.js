@@ -114,8 +114,6 @@ const games_html = games.map(function (game) {
         const root = html_parser.parse(embedded_html, parse_options);
         const head_html = root.querySelector('head').toString();
         const body_html = root.querySelector('body').toString();
-        console.log(head_html);
-        console.log(body_html);
         game_view.embedded = body_html;
         game_view.scripts += head_html;
     }
