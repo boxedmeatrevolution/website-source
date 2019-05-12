@@ -7,18 +7,21 @@
   <body>
     <header>
       <h1>Boxed Meat Revolution</h1>
+      <a href="https://github.com/boxedmeatrevolution/">Github</a>
+      <a href="https://ldjam.com/users/boxedmeatrevolution/">Ludum Dare profile</a>
       <p>We make games.</p>
     </header>
     <nav>
-      <p><a href="/">Home</a></p>
-      <p><a href="/about-us">Our team</a></p>
-      <p><a href="/games/spacebank-heist">Spacebank Heist</a></p>
-      <p><a href="/games/one-button-wizard">One Button Wizard</a></p>
-      <p><a href="/games/dr-ectomy">Dr. Ectomy</a></p>
+      <p><a href="./index.html">Home</a></p>
+      <p><a href="./about.html">Our team</a></p>
+      {{#games}}
+      <p><a href="./games/{{id}}/{{id}}.html">{{name}}</a></p>
+      {{/games}}
     </nav>
-    {{body}}
+    {{{body}}}
     <footer>
       <p>Copyright information.</p>
     </footer>
   </body>
 </html>
+

@@ -1,0 +1,23 @@
+<h1>{{game.name}}</h1>
+<div class="game-developers-container">
+    {{#game.developers}}
+    <div class="game-developers-item">
+    {{.}}
+    </div>
+    {{/game.developers}}
+</div>
+<p>{{game.jam}}: {{game.theme}}</p>
+<p><a href={{game.source}}>Source code ({{game.language}})</a></p>
+<p>{{game.about}}</p>
+
+{{{embedded}}}
+
+{{#downloads.length}}
+Downloads:
+<ul>
+    {{#downloads}}
+    <li><a href="./{{file}}">{{platform}}</a></li>
+    {{/downloads}}
+</ul>
+{{/downloads.length}}
+

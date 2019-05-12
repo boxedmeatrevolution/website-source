@@ -1,0 +1,15 @@
+<h1>About us</h1>
+<div class="about-developers-container">
+    {{#developers}}
+    <div class="about-developers-item">
+        <h2>{{name}}</h2>
+        <img src="../pictures/{{portrait}}" alt="Portrait of {{name}}" />
+        {{#github}}<a href="{{.}}">Github</a>{{/github}}
+        {{#website}}<a href="{{.}}">Website</a>{{/website}}
+        <p>
+        {{about}}
+        </p>
+    </div>
+    {{/developers}}
+</div>
+
