@@ -3,29 +3,29 @@
     "id": "duane-byer",
     "name": "Duane Byer",
     "portrait": "duane-byer.png",
-    "about": "",
+    "about": "About Duane.",
     "github": "https://github.com/duanebyer/"
   },
   {
     "id": "aidan-mahler",
     "name": "Aidan Mahler",
     "portrait": "aidan-mahler.png",
-    "about": "",
-    "github": ""
+    "about": "About Aidan.",
+    "github": "https://github.com/asemahle/"
   },
   {
     "id": "nikole-mcgregor",
     "name": "Nikole McGregor",
     "portrait": "nikole-mcgregor.png",
-    "about": "",
+    "about": "About Nikole.",
     "website": ""
   },
   {
     "id": "george-shen",
     "name": "George Shen",
     "portrait": "george-shen.png",
-    "about": "",
-    "github": ""
+    "about": "About George.",
+    "github": "https://github.com/geoys/"
   }
 ]
 
