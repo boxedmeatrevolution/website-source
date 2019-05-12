@@ -51,7 +51,7 @@ if (fs.readdirSync(build_dir).length != 0) {
 const wrapper_template = fs.readFileSync('./template.html', 'utf8');
 
 // Read the pages.
-let index_html = fs.readFileSync('./pages/index.html', 'utf8');
+let index_template = fs.readFileSync('./pages/index.html', 'utf8');
 let about_template = fs.readFileSync('./pages/about.html', 'utf8');
 let game_template = fs.readFileSync('./pages/game.html', 'utf8');
 
@@ -81,6 +81,7 @@ let wrapper_data = {
     'developers': developers,
     'games': games
 };
+let index_html = mustache.render(index_template, { 'games': games });
 index_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', index_html));
 let about_html = mustache.render(about_template, { 'developers': developers });
 about_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', about_html));
