@@ -153,9 +153,16 @@ games.forEach(function (game, index) {
     }
     // The game page must be written to the build directory.
     fs.writeFileSync(path.join(game_dir, 'index.html'), games_html[index], 'utf8');
+    // Copy the downloads associated with the game to the right place.
+    game.downloads.forEach(function (download) {
+        const file_name = download.file;
+        const source_game_file = path.join('./games/', file_name);
+        const target_game_file = path.join(downloads_dir, file_name);
+        fs.copyFileSync(source_game_file, target_game_file);
+    });
 });
 
 // Copy pictures and styles to the build directory.
-
-// Copy the game files themselves to the build directory.
+copyFolderRecursiveSync('./pictures/', pictures_dir);
+copyFolderRecursiveSync('./styles/', styles_dir);
 
