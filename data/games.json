@@ -2,8 +2,9 @@
   {
     "id": "spacebank-heist",
     "name": "Spacebank Heist",
-    "about": "",
-    "web_folder": null,
+    "about": "About Spacebank Heist.",
+    "web_dir": null,
+    "screenshots": ["spacebank-heist1.png", "spacebank-heist2.png"],
     "downloads": [
         {
             "platform": "windows",
@@ -24,8 +25,9 @@
   {
     "id": "one-button-wizard",
     "name": "One Button Wizard",
-    "about": "",
-    "web_folder": "one-button-wizard/",
+    "about": "About One Button Wizard.",
+    "web_dir": "one-button-wizard/",
+    "screenshots": ["one-button-wizard1.png", "one-button-wizard2.png"],
     "downloads": [],
     "jam": "Ludum Dare ??",
     "theme": "One button ??",
@@ -37,8 +39,9 @@
   {
     "id": "dr-ectomy",
     "name": "Dr. Ectomy",
-    "about": "",
-    "web_folder": "dr-ectomy/",
+    "about": "About Dr. Ectomy.",
+    "web_dir": "dr-ectomy/",
+    "screenshots": ["dr-ectomy1.png", "dr-ectomy2.png"],
     "downloads": [
         {
             "platform": "windows",
