@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "mustache": "~3.0.0",
+    "node-html-parser": "~1.1.15",
     "path": "~0.12.7"
   },
   "author": "Duane Byer",

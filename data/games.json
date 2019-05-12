@@ -7,12 +7,8 @@
     "screenshots": ["spacebank-heist1.png", "spacebank-heist2.png"],
     "downloads": [
         {
-            "platform": "windows",
+            "platform": "Windows",
             "file": "spacebank-heist.zip"
-        },
-        {
-            "platform": "mac",
-            "file": "spacebank-heist.??"
         }
     ],
     "jam": "Ludum Dare ??",
@@ -44,12 +40,8 @@
     "screenshots": ["dr-ectomy1.png", "dr-ectomy2.png"],
     "downloads": [
         {
-            "platform": "windows",
+            "platform": "Windows",
             "file": "dr-ectomy.zip"
-        },
-        {
-            "platform": "mac",
-            "file": "dr-ectomy.???"
         }
     ],
     "jam": "Ludum Dare ??",

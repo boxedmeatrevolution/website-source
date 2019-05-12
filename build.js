@@ -1,14 +1,13 @@
 // Build script for the website.
 
 const fs = require('fs');
+const html_parser = require('node-html-parser');
 const mustache = require('mustache');
 const path = require('path');
 
 // Some useful utility functions.
-function addProp(obj, key, val) {
-    let result = JSON.parse(JSON.stringify(obj));
-    result[key] = val;
-    return result;
+function deepCopy(obj) {
+    return JSON.parse(JSON.stringify(obj));
 }
 
 function copyFolderRecursiveSync(source, target) {
@@ -75,34 +74,54 @@ catch (error) {
     throw `Error parsing ${fileName}: ${message}`;
 }
 
-// Use substitutions to build the pages.
-let wrapper_data = {
-    'body': '',
+// Use templates to build the pages.
+const view = {
+    'scripts': '',
     'developers': developers,
     'games': games
 };
-let home_html = mustache.render(home_template, { 'games': games });
-home_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', home_html));
-let about_html = mustache.render(about_template, { 'developers': developers });
-about_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', about_html));
+
+let home_view = deepCopy(view);
+let home_html = mustache.render(home_template, home_view);
+home_view.body = home_html;
+home_html = mustache.render(wrapper_template, home_view);
+
+let about_view = deepCopy(view);
+about_view.title = 'Our team';
+let about_html = mustache.render(about_template, about_view);
+about_view.body = about_html;
+about_html = mustache.render(wrapper_template, about_view);
+
 // Loop through all games to make a different page for each game.
 const games_html = games.map(function (game) {
     // This is a little more complicated: if a web distribution exists, then it
     // must be embedded into the page.
-    let game_data = { 'game': game };
+    let game_view = deepCopy(view);
+    game_view.title = game.name;
+    game_view.game = game;
     if (game.web_dir != null) {
-        // TODO: Merge `index.html` correctly with the `game_template`, by
-        // merging the `head`, `body`, etc. indivdually.
         const embedded_file_path = path.join(
             './games/',
             path.join(
                 game.web_dir,
                 './index.html'));
         const embedded_html = fs.readFileSync(embedded_file_path, 'utf8');
-        game_data.embedded = embedded_html;
+        const parse_options = {
+            script: true,
+            style: true,
+            pre: true
+        };
+        const root = html_parser.parse(embedded_html, parse_options);
+        const head_html = root.querySelector('head').toString();
+        const body_html = root.querySelector('body').toString();
+        console.log(head_html);
+        console.log(body_html);
+        game_view.embedded = body_html;
+        game_view.scripts += head_html;
     }
-    let game_html = mustache.render(game_template, game_data);
-    game_html = mustache.render(wrapper_template, addProp(wrapper_data, 'body', game_html));
+    let game_html = mustache.render(game_template, game_view);
+    game_view.body = game_html;
+    game_html = mustache.render(wrapper_template, game_view);
     return game_html;
 });
 
@@ -111,7 +130,7 @@ const home_dir = build_dir;
 const about_dir = path.join(home_dir, './about/');
 const games_dir = path.join(home_dir, './games/');
 const downloads_dir = path.join(home_dir, './downloads/');
-const pictures_dir = path.join(home_dir, './pictures/');
+const images_dir = path.join(home_dir, './images/');
 const styles_dir = path.join(home_dir, './styles/');
 if (!fs.existsSync(home_dir)) {
     fs.mkdirSync(home_dir);
@@ -125,8 +144,8 @@ if (!fs.existsSync(games_dir)) {
 if (!fs.existsSync(downloads_dir)) {
     fs.mkdirSync(downloads_dir);
 }
-if (!fs.existsSync(pictures_dir)) {
-    fs.mkdirSync(pictures_dir);
+if (!fs.existsSync(images_dir)) {
+    fs.mkdirSync(images_dir);
 }
 if (!fs.existsSync(styles_dir)) {
     fs.mkdirSync(styles_dir);
@@ -162,7 +181,7 @@ games.forEach(function (game, index) {
     });
 });
 
-// Copy pictures and styles to the build directory.
-copyFolderRecursiveSync('./pictures/', pictures_dir);
+// Copy images and styles to the build directory.
+copyFolderRecursiveSync('./images/', images_dir);
 copyFolderRecursiveSync('./styles/', styles_dir);
 

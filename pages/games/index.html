@@ -4,7 +4,7 @@
 <div class="game-screenshots-container">
   {{#game.screenshots}}
   <span class="game-screenshots-item">
-    <img src="/pictures/{{.}}" alt="Screenshot of {{game.name}}." />
+    <img src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
   </span>
   {{/game.screenshots}}
 </div>
@@ -25,16 +25,16 @@
 
 {{{embedded}}}
 
-{{#downloads.length}}
+{{#game.downloads.length}}
 <p>
   Downloads:
   <ul>
-    {{#downloads}}
+    {{#game.downloads}}
     <li><a href="/downloads/{{file}}">{{platform}}</a></li>
-    {{/downloads}}
+    {{/game.downloads}}
   </ul>
 </p>
-{{/downloads.length}}
+{{/game.downloads.length}}
 
 <p><a href={{game.source}}>Source code ({{game.language}})</a></p>
 
