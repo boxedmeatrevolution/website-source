@@ -1,14 +1,27 @@
-<h1>{{game.name}}</h1>
+<div class="page-title">{{game.name}}</div>
 
 {{#game.screenshots.length}}
-<div class="game-screenshots-container">
-  {{#game.screenshots}}
-  <span class="game-screenshots-item">
-    <img src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
-  </span>
-  {{/game.screenshots}}
+<div class="game-gallery" hidden>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <img id="gallery-large-screenshot" class="game-gallery-large-screenshot p-2" src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+    <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
+      {{#game.screenshots}}
+      <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
+      {{/game.screenshots}}
+    </div>
+  </div>
 </div>
+<script>
+  function gameGalleryClickHandler(event) {
+    let largeScreenshot = document.getElementById('gallery-large-screenshot');
+    largeScreenshot.src = event.target.src;
+  }
+</script>
 {{/game.screenshots.length}}
+
+<div class="game-embedded" hidden>
+  {{{embedded}}}
+</div>
 
 {{#game.developers.length}}
 <div class="game-developers-container">
@@ -22,8 +35,6 @@
 
 <p>{{game.jam}}: {{game.theme}}</p>
 <p>{{game.about}}</p>
-
-{{{embedded}}}
 
 {{#game.downloads.length}}
 <p>

@@ -1,11 +1,17 @@
-<h1>About us</h1>
-<div class="about-developers-container">
+<div class="page-title">Our team</div>
+<div class="d-flex flex-row justify-content-around align-items-start flex-wrap">
   {{#developers}}
-  <div class="about-developers-item">
-    <h2>{{name}}</h2>
-    <img src="../images/{{portrait}}" alt="Portrait of {{name}}" />
-    {{#github}}<p><a href="{{.}}">Github</a></p>{{/github}}
-    {{#website}}<p><a href="{{.}}">Website</a></p>{{/website}}
+  <div class="">
+    <img class="developer-portrait my-2" src="../images/{{portrait}}" alt="Portrait of {{name}}" />
+    <div class="developer-name">{{name}}</div>
+    <div class="d-flex justify-content-around align-items-center flex-nowrap">
+      {{#github}}
+      <a class="px-2 py-1" href="{{.}}">
+        <img src="/images/github-mark.png" height="20.0rem"/><img src="/images/github-logo.png" height="20.0rem" />
+      </a>
+      {{/github}}
+      {{#website}}<a class="developer-website px-2 py-1" href="{{.}}"><img class="pr-1" src="/images/globe-icon.png" height="20.0rem" />website</a>{{/website}}
+    </div>
     <p>{{about}}</p>
   </div>
   {{/developers}}

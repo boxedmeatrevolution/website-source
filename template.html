@@ -2,29 +2,49 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Small video games developed by our team for Ludum Dare and other game jams.">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Boxed Meat Revolution{{#title}} | {{.}}{{/title}}</title>
     {{{scripts}}}
   </head>
   <body>
-    <header>
-      <h1>Boxed Meat Revolution</h1>
-      <p>
-        <span><a href="https://github.com/boxedmeatrevolution/">Github</a></span>
-        <span><a href="https://ldjam.com/users/boxedmeatrevolution/">Ludum Dare profile</a></span>
-      </p>
-      <p>We make games.</p>
-    </header>
-    <nav>
-      <span><a href="/">Home</a></span>
-      <span><a href="/about/">Our team</a></span>
-      {{#games}}
-      <span><a href="/games/{{id}}/">{{name}}</a></span>
-      {{/games}}
-    </nav>
-    {{{body}}}
-    <footer>
-      <p>Copyright information.</p>
-    </footer>
+    <div class="container px-0 main">
+      <!-- Title. -->
+      <header class="main-header pt-4 pb-2">
+        <div class="d-flex flex-column justify-content-between align-items-center">
+          <a class="main-header-title py-1 text-dark" href="/">Boxed Meat Revolution</a>
+          <div class="py-1">We make games.</div>
+          <div class="d-flex flex-row flex-nowrap">
+            <div class="p-2"><a href="https://github.com/boxedmeatrevolution/">
+              <img src="/images/github-mark.png" height="30.0rem" /><img src="/images/github-logo.png" height="30.0rem" />
+            </a></div>
+            <div class="p-2"><a href="https://ldjam.com/users/boxedmeatrevolution/">
+              <img src="/images/ludumdare-logo.png" height="25.0rem" />
+            </a></div>
+          </div>
+        </div>
+      </header>
+      <!-- Navigation. -->
+      <nav class="main-navbar py-0">
+        <div class="d-flex flex-row flex-wrap justify-content-around align-items-center">
+          <a class="flex-grow-1 main-navbar-item text-muted" href="/">Home</a></span>
+          <a class="flex-grow-1 main-navbar-item text-muted" href="/about/">Our team</a>
+          {{#games}}
+          <a class="flex-grow-1 main-navbar-item text-muted" href="/games/{{id}}/">{{name}}</a>
+          {{/games}}
+        </div>
+      </nav>
+      <!-- Body. -->
+      <main class="p-4">
+        {{{body}}}
+      </main>
+      <!-- Footer. -->
+      <footer class="main-footer">
+        <p>© Copyright 2019 Duane Byer.</p>
+      </footer>
+    </div>
   </body>
 </html>
 
