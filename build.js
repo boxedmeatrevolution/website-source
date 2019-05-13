@@ -180,6 +180,6 @@ games.forEach(function (game, index) {
 });
 
 // Copy images and styles to the build directory.
-copyFolderRecursiveSync('./images/', images_dir);
-copyFolderRecursiveSync('./styles/', styles_dir);
+copyFolderRecursiveSync('./images/', home_dir);
+copyFolderRecursiveSync('./styles/', home_dir);
 
