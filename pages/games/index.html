@@ -1,7 +1,8 @@
 <div class="page-title">{{game.name}}</div>
 
+{{^game.web_dir}}
 {{#game.screenshots.length}}
-<div class="game-gallery" hidden>
+<div class="game-gallery">
   <div class="d-flex flex-column justify-content-center align-items-center">
     <img id="gallery-large-screenshot" class="game-gallery-large-screenshot p-2" src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
     <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
@@ -18,34 +19,51 @@
   }
 </script>
 {{/game.screenshots.length}}
+{{/game.web_dir}}
 
-<div class="game-embedded" hidden>
-  {{{embedded}}}
+{{#game.web_dir}}
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="game-embedded p-4">
+    {{{embedded}}}
+  </div>
 </div>
-
-{{#game.developers.length}}
-<div class="game-developers-container">
-  {{#game.developers}}
-  <span class="game-developers-item">
-    {{.}}
-  </span>
-  {{/game.developers}}
+<div class="game-gallery">
+  <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
+    {{#game.screenshots}}
+    <a href="/images/{{.}}" target="_blank">
+      <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
+    </a>
+    {{/game.screenshots}}
+  </div>
 </div>
-{{/game.developers.length}}
+{{/game.web_dir}}
 
-<p>{{game.jam}}: {{game.theme}}</p>
-<p>{{game.about}}</p>
+<div class="d-flex flex-column justify-content-center align-items-center py-3">
+  <div class="game-name-small py-2">{{game.name}}</div>
+  <div class="game-description">
+    {{#game.developers.length}}
+    <div class="game-developers-container">
+      {{#game.developers}}
+      <span class="game-developers-item">{{.}}</span><span class="game-developers-separator">, </span>
+      {{/game.developers}}
+    </div>
+    {{/game.developers.length}}
 
-{{#game.downloads.length}}
-<p>
-  Downloads:
-  <ul>
-    {{#game.downloads}}
-    <li><a href="/downloads/{{file}}">{{platform}}</a></li>
-    {{/game.downloads}}
-  </ul>
-</p>
-{{/game.downloads.length}}
+    <div class="game-jam-name">{{game.jam}}: {{game.theme}}</div>
+    <div class="game-date">{{game.date}}</div>
 
-<p><a href={{game.source}}>Source code ({{game.language}})</a></p>
+    <div class="game-about py-2">{{game.about}}</div>
+
+    {{#game.downloads.length}}
+    <div class="game-downloads-container">
+      <ul>
+        {{#game.downloads}}
+        <li><a href="/downloads/{{file}}">{{platform}}</a></li>
+        {{/game.downloads}}
+      </ul>
+    </div>
+    {{/game.downloads.length}}
+    <p><a href={{game.source}} target="_blank">Source code ({{game.language}})</a></p>
+  </div>
+</div>
 
