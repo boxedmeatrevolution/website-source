@@ -21,14 +21,14 @@
   {
     "id": "one-button-wizard",
     "name": "One Button Wizard",
-    "about": "About One Button Wizard.",
+    "about": "You are an all-powerful wizard with mastery over hundreds of elements, but for some reason you only want to use two of them. Create powerful spells by combining the two elements using only a single button. Fight many deadly monsters, each with their own puzzling attack patterns, or fight a friend in a wizard duel!",
     "web_dir": "one-button-wizard/",
     "screenshots": ["one-button-wizard1.jpg", "one-button-wizard2.jpg", "one-button-wizard3.jpg"],
     "downloads": [],
-    "jam": "Ludum Dare ??",
-    "theme": "One button ??",
-    "date": "??",
-    "source": "https://github.com/boxed-meat-revolution/one-button-wizard",
+    "jam": "Ludum Dare 34", 
+    "theme": "Two button controls",
+    "date": "December 11, 2015",
+    "source": "https://github.com/boxedmeatrevolution/OneButtonWizard",
     "language": "Processing JS",
     "developers": ["Duane Byer", "Aidan Mahler", "George Shen", "Stacy Woods"]
   },
@@ -37,7 +37,7 @@
     "name": "Dr. Ectomy",
     "about": "About Dr. Ectomy.",
     "web_dir": "dr-ectomy/",
-    "screenshots": ["dr-ectomy1.png", "dr-ectomy2.png"],
+    "screenshots": ["dr-ectomy1.jpg", "dr-ectomy2.jpg"],
     "downloads": [
         {
             "platform": "Windows",
