@@ -20,7 +20,7 @@ function copyFolderRecursiveSync(source, target) {
             const current_source = path.join(source, file);
             const current_target = path.join(target_dir, file);
             if (fs.lstatSync(current_source).isDirectory()) {
-                copyFolderRecursiveSync(current_source, current_target);
+                copyFolderRecursiveSync(current_source, target_dir);
             }
             else {
                 fs.copyFileSync(current_source, current_target);
