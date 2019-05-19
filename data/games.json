@@ -3,13 +3,13 @@
     "id": "spacebank-heist",
     "name": "Spacebank Heist",
     "about": "About Spacebank Heist.",
-    "web_dir": null,
+    "embed": null,
     "screenshots": ["spacebank-heist1.png", "spacebank-heist2.png"],
     "downloads": [
-        {
-            "platform": "Windows",
-            "file": "spacebank-heist.zip"
-        }
+      {
+        "platform": "Windows",
+        "file": "spacebank-heist.zip"
+      }
     ],
     "jam": "Ludum Dare ??",
     "theme": "One-screen ??",
@@ -21,9 +21,15 @@
   {
     "id": "one-button-wizard",
     "name": "One Button Wizard",
-    "about": "You are an all-powerful wizard with mastery over hundreds of elements, but for some reason you only want to use two of them. Create powerful spells by combining the two elements using only a single button. Fight many deadly monsters, each with their own puzzling attack patterns, or fight a friend in a wizard duel!",
-    "web_dir": "one-button-wizard/",
-    "screenshots": ["one-button-wizard1.jpg", "one-button-wizard2.jpg", "one-button-wizard3.jpg"],
+    "about": "<p>You are an all-powerful wizard with mastery over hundreds of elements, but for some reason you only want to use two of them. Create powerful spells by combining the two elements using only a single button. Fight many deadly monsters, each with their own puzzling attack patterns, or fight a friend in a wizard duel!</p>\n<p>Use the Z key (for player 1) and M key (for player 2) to cast spells using any combination of up to three long and short taps. See the <a href='/images/one-button-wizard-cheat-sheet.png' target='_blank'>wizard cheat sheet</a> for a list of all possible spells.</p>",
+    "embed": {
+      "dir": "one-button-wizard/",
+      "resolution": {"width": 1000, "height": 680}
+    },
+    "screenshots": [
+      "one-button-wizard1.png",
+      "one-button-wizard2.png",
+      "one-button-wizard3.png"],
     "downloads": [],
     "jam": "Ludum Dare 34", 
     "theme": "Two button controls",
@@ -36,7 +42,10 @@
     "id": "dr-ectomy",
     "name": "Dr. Ectomy",
     "about": "About Dr. Ectomy.",
-    "web_dir": "dr-ectomy/",
+    "embed": {
+      "dir": "dr-ectomy/",
+      "resolution": {"width": 1000, "height": 680}
+    },
     "screenshots": ["dr-ectomy1.jpg", "dr-ectomy2.jpg"],
     "downloads": [
         {

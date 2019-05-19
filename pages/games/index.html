@@ -1,6 +1,6 @@
 <div class="page-title">{{game.name}}</div>
 
-{{^game.web_dir}}
+{{^game.embed}}
 {{#game.screenshots.length}}
 <div class="game-gallery">
   <div class="d-flex flex-column justify-content-center align-items-center">
@@ -19,12 +19,19 @@
   }
 </script>
 {{/game.screenshots.length}}
-{{/game.web_dir}}
+{{/game.embed}}
 
-{{#game.web_dir}}
+{{#game.embed}}
+<div id="script-parent">
+  <!-- Scripts for the embedded game will go here. -->
+</div>
 <div class="d-flex flex-column justify-content-center align-items-center">
-  <div class="game-embedded p-4">
-    {{{embedded}}}
+  <div id="canvas-parent" class="game-embedded p-0 m-4" width={{resolution.width}} height={{resolution.height}}>
+    <!-- The canvas for the embedded game will go here. -->
+    <div class="game-play-container">
+      <img src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+      <button type="button" class="btn btn-default"><img src="/images/play-triangle.png" />PLAY GAME<img src="/images/play-triangle.png" onclick="loadGame()"/></button>
+    </div>
   </div>
 </div>
 <div class="game-gallery">
@@ -36,7 +43,7 @@
     {{/game.screenshots}}
   </div>
 </div>
-{{/game.web_dir}}
+{{/game.embed}}
 
 <div class="d-flex flex-column justify-content-center align-items-center py-3">
   <div class="game-name-small py-2">{{game.name}}</div>
@@ -52,7 +59,7 @@
     <div class="game-jam-name">{{game.jam}}: {{game.theme}}</div>
     <div class="game-date">{{game.date}}</div>
 
-    <div class="game-about py-2">{{game.about}}</div>
+    <div class="game-about py-2">{{{game.about}}}</div>
 
     {{#game.downloads.length}}
     <div class="game-downloads-container">
@@ -66,4 +73,9 @@
     <p><a href={{game.source}} target="_blank">Source code ({{game.language}})</a></p>
   </div>
 </div>
+
+<script type="text/javascript">
+  function loadGame() {
+  }
+</script>
 
