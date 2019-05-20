@@ -2,9 +2,13 @@
   {
     "id": "spacebank-heist",
     "name": "Spacebank Heist",
-    "about": "About Spacebank Heist.",
+    "brief": "Brief description of Spacebank Heist.",
+    "instructions": "Instructions.",
     "embed": null,
-    "screenshots": ["spacebank-heist1.png", "spacebank-heist2.png"],
+    "screenshots": [
+      "spacebank-heist1.jpg",
+      "spacebank-heist2.jpg",
+      "spacebank-heist3.jpg"],
     "downloads": [
       {
         "platform": "Windows",
@@ -21,7 +25,8 @@
   {
     "id": "one-button-wizard",
     "name": "One Button Wizard",
-    "about": "<p>You are an all-powerful wizard with mastery over hundreds of elements, but for some reason you only want to use two of them. Create powerful spells by combining the two elements using only a single button. Fight many deadly monsters, each with their own puzzling attack patterns, or fight a friend in a wizard duel!</p>\n<p>Use the Z key (for player 1) and M key (for player 2) to cast spells using any combination of up to three long and short taps. See the <a href='/images/one-button-wizard-cheat-sheet.png' target='_blank'>wizard cheat sheet</a> for a list of all possible spells.</p>",
+    "brief": "You are an all-powerful wizard with mastery over hundreds of elements, but for some reason you only want to use two of them. Create powerful spells by combining the two elements using only a single button. Fight many deadly monsters, each with their own puzzling attack patterns, or fight a friend in a wizard duel!",
+    "instructions": "Use the Z key (for player 1) and M key (for player 2) to cast spells using any combination of up to three long and short taps. See the <a href='/images/one-button-wizard-cheat-sheet.png' target='_blank'>wizard cheat sheet</a> for a list of all possible spells.",
     "embed": {
       "dir": "one-button-wizard/",
       "resolution": {"width": 1000, "height": 680}
@@ -41,7 +46,8 @@
   {
     "id": "dr-ectomy",
     "name": "Dr. Ectomy",
-    "about": "About Dr. Ectomy.",
+    "brief": "About Dr. Ectomy.",
+    "instructions": "",
     "embed": {
       "dir": "dr-ectomy/",
       "resolution": {"width": 1000, "height": 680}

@@ -13,6 +13,7 @@
 }
 
 .main-navbar {
+    height: 3.0rem;
     border-top: 1px solid #e5e5e5;
     border-bottom: 4px double #e5e5e5;
     background-color: #f5f5f5;
@@ -29,6 +30,7 @@
 .main-navbar-item:hover {
     text-decoration: none;
     background-color: #f1f1f1;
+    cursor: pointer;
 }
 
 .main-footer {
@@ -42,6 +44,40 @@
     text-align: center;
     font-size: 2.00rem;
     padding: 2.0rem 0;
+}
+
+.games-container {
+}
+
+.games-row {
+    padding: 1.0rem 0;
+}
+
+.games-row+.games-row {
+    border-top: 2px solid #c5c5c5;
+}
+
+.games-name {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.games-meta {
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.games-brief {
+    text-align: left;
+    font-size: 1.0rem;
+}
+
+.games-screenshot {
+    width: 100%;
+    height: auto;
 }
 
 .game-gallery {
@@ -60,17 +96,19 @@
     cursor: pointer;
 }
 
-.game-play-container {
+.game-embedded-fail-strip,.game-embedded-play-strip {
     position: relative;
+    overflow: hidden;
 }
 
-.game-play-container>img {
+.game-embedded-fail-strip>img,.game-embedded-play-strip>img {
     width: 100%;
     height: auto;
+    transform: scale(1.05);
     filter: blur(4px) brightness(150%) saturate(50%);
 }
 
-.game-play-container>.btn {
+.game-embedded-fail-strip>.btn,.game-embedded-play-strip>.btn {
     position: absolute;
     transform: translate(-50%, -50%);
     background: #13e800;
@@ -88,12 +126,20 @@
     white-space: nowrap;
 }
 
-.game-play-container>.btn:hover {
+.game-embedded-fail-strip>.btn {
+    background: #e81300;
+}
+
+.game-embedded-fail-strip>.btn:hover,.game-embedded-play-strip>.btn:hover {
     background: #10c800;
     color: #FFFFFF;
 }
 
-.game-play-container>.btn>img {
+.game-embedded-fail-strip>.btn:hover {
+    background: #c81000;
+}
+
+.game-embedded-play-strip>.btn>img {
     height: 80%;
     padding-right: 2.0rem;
     padding-left: 2.0rem;
@@ -101,29 +147,53 @@
 }
 
 .game-embedded {
+    display: flex;
+    width: 100%;
+    box-shadow: 0px 0px 0px 8px #050505;
+}
+
+.game-embedded-iframe {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.game-embedded-fail-message,.game-embedded-fail-message-details {
     display: inline-block;
-    border: 4px solid #afafaf;
+    color: #FFFFFF;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.game-embedded-fail-message-details {
+    font-size: 0.8rem;
 }
 
 .game-name-small {
     text-align: center;
-    text-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 .game-jam-name {
     text-align: center;
-    text-size: 1.0rem;
+    font-size: 1.0rem;
     font-style: italic;
 }
 
 .game-date {
     text-align: center;
-    text-size: 1.0rem;
+    font-size: 1.0rem;
     font-style: italic;
 }
 
-.game-description {
+.game-brief {
+    width: 90%;
+}
+
+.game-instructions {
     width: 90%;
 }
 
@@ -141,7 +211,7 @@
 
 .developer-name {
     text-align: center;
-    text-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 

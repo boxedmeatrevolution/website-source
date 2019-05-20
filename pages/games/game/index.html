@@ -1,0 +1,135 @@
+<div class="page-title">{{game.name}}</div>
+
+{{^game.embed}}
+{{#game.screenshots.length}}
+<div class="game-gallery">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <img id="gallery-large-screenshot" class="game-gallery-large-screenshot p-2" src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+    <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
+      {{#game.screenshots}}
+      <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
+      {{/game.screenshots}}
+    </div>
+  </div>
+</div>
+<script>
+  function gameGalleryClickHandler(event) {
+    let largeScreenshot = document.getElementById('gallery-large-screenshot');
+    largeScreenshot.src = event.target.src;
+  }
+</script>
+{{/game.screenshots.length}}
+{{/game.embed}}
+
+{{#game.embed}}
+<style scoped>
+  .embed-show-if {
+    display: none;
+  }
+  .embed-show-if-not {
+    display: inline-block;
+  }
+  .game-embed-choose-size {
+    max-width: {{resolution.width}}px;
+    max-height: {{resolution.height}}px;
+    width: auto;
+    height: auto;
+  }
+  @media only screen and (min-width: {{resolution.width}}px) {
+    .embed-show-if {
+      display: inline-block;
+    }
+    .embed-show-if-not {
+      display: none;
+    }
+    .game-embed-choose-size {
+      width: {{resolution.width}}px;
+      height: {{resolution.height}}px;
+    }
+  }
+</style>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="game-embedded game-embed-choose-size p-0 m-4">
+    <div id="game-embedded-iframe" class="game-embedded-iframe"></div>
+    <div id="game-embedded-play-button" class="embed-show-if game-embedded-play-strip">
+      <img src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+      <button type="button" class="btn btn-default" onclick="loadGame()">
+        <img src="/images/play-triangle.png" />PLAY GAME<img src="/images/play-triangle.png" />
+      </button>
+    </div>
+    <div id="game-embedded-fail-button" class="embed-show-if-not game-embedded-fail-strip">
+      <img src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+      <button type="button" class="btn btn-default" onclick="loadGame()">
+        <div class="d-flex flex-column">
+          <div class="game-embedded-fail-message">SCREEN WIDTH IS TOO SMALL</div>
+          <div class="game-embedded-fail-message-details">click to try playing anyway</div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="game-gallery">
+  <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
+    {{#game.screenshots}}
+    <a href="/images/{{.}}" target="_blank">
+      <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
+    </a>
+    {{/game.screenshots}}
+  </div>
+</div>
+<script type="text/javascript">
+  function loadGame() {
+    let divRemove = document.getElementById('game-embedded-iframe');
+    let playButton = document.getElementById('game-embedded-play-button');
+    let failStrip = document.getElementById('game-embedded-fail-button');
+    let embedParent = divRemove.parentElement;
+    playButton.remove();
+    failStrip.remove();
+    let iframe = document.createElement('iframe');
+    iframe.title = 'Frame embedding the game.';
+    iframe.width = {{game.embed.resolution.width}};
+    iframe.height = {{game.embed.resolution.height}};
+    iframe.src = '/embeds/{{game.id}}/index.html';
+    iframe.className = divRemove.className;
+    embedParent.replaceChild(iframe, divRemove);
+    iframe.onload = function() {
+      let embeddedDocument = iframe.contentDocument;
+      embeddedDocument.body.style['margin'] = '0';
+      embeddedDocument.body.style['padding'] = '0';
+      embeddedDocument.body.style['overflow'] = 'hidden';
+    }
+  }
+</script>
+{{/game.embed}}
+
+<div class="d-flex flex-column justify-content-center align-items-center py-3">
+  <div class="game-name-small py-2">{{game.name}}</div>
+  <div class="game-description">
+    {{#game.developers.length}}
+    <div class="game-developers-container">
+      {{#game.developers}}
+      <span class="game-developers-item">{{.}}</span><span class="game-developers-separator">, </span>
+      {{/game.developers}}
+    </div>
+    {{/game.developers.length}}
+
+    <div class="game-jam-name">{{game.jam}}: {{game.theme}}</div>
+    <div class="game-date">{{game.date}}</div>
+
+    <div class="game-brief py-2">{{{game.brief}}}</div>
+    <div class="game-instructions py-2">{{{game.instructions}}}</div>
+
+    {{#game.downloads.length}}
+    <div class="game-downloads-container">
+      <ul>
+        {{#game.downloads}}
+        <li><a href="/downloads/{{file}}">{{platform}}</a></li>
+        {{/game.downloads}}
+      </ul>
+    </div>
+    {{/game.downloads.length}}
+    <p><a href={{game.source}} target="_blank">Source code ({{game.language}})</a></p>
+  </div>
+</div>
+

@@ -1,7 +1,6 @@
 // Build script for the website.
 
 const fs = require('fs');
-const html_parser = require('node-html-parser');
 const mustache = require('mustache');
 const path = require('path');
 
@@ -10,14 +9,10 @@ function deepCopy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
-function copyFolderRecursiveSync(source, target) {
-    let target_dir = path.join(target, path.basename(source));
-    if (!fs.existsSync(target_dir)) {
-        fs.mkdirSync(target_dir);
-    }
-    if (fs.lstatSync(source).isDirectory()) {
-        fs.readdirSync(source).forEach(function (file) {
-            const current_source = path.join(source, file);
+function copyFolderContentsRecursiveSync(source_dir, target_dir) {
+    if (fs.lstatSync(source_dir).isDirectory()) {
+        fs.readdirSync(source_dir).forEach(function (file) {
+            const current_source = path.join(source_dir, file);
             const current_target = path.join(target_dir, file);
             if (fs.lstatSync(current_source).isDirectory()) {
                 copyFolderRecursiveSync(current_source, target_dir);
@@ -28,8 +23,16 @@ function copyFolderRecursiveSync(source, target) {
         });
     }
     else {
-        throw JSON.stringify(source) + ' is not a directory.';
+        throw JSON.stringify(source_dir) + ' is not a directory.';
     }
+}
+
+function copyFolderRecursiveSync(source_dir, target_dir) {
+    const new_target_dir = path.join(target_dir, path.basename(source_dir));
+    if (!fs.existsSync(new_target_dir)) {
+        fs.mkdirSync(new_target_dir);
+    }
+    copyFolderContentsRecursiveSync(source_dir, new_target_dir);
 }
 
 // Load command line arguments.
@@ -52,7 +55,8 @@ const wrapper_template = fs.readFileSync('./template.html', 'utf8');
 // Read the pages.
 const home_template = fs.readFileSync('./pages/index.html', 'utf8');
 const about_template = fs.readFileSync('./pages/about/index.html', 'utf8');
-const game_template = fs.readFileSync('./pages/games/index.html', 'utf8');
+const games_template = fs.readFileSync('./pages/games/index.html', 'utf8');
+const game_template = fs.readFileSync('./pages/games/game/index.html', 'utf8');
 
 // Read the data which will populate the pages.
 let developers = fs.readFileSync('./data/developers.json', 'utf8');
@@ -87,36 +91,22 @@ home_view.body = home_html;
 home_html = mustache.render(wrapper_template, home_view);
 
 let about_view = deepCopy(view);
-about_view.title = 'Our team';
+about_view.title = 'About';
 let about_html = mustache.render(about_template, about_view);
 about_view.body = about_html;
 about_html = mustache.render(wrapper_template, about_view);
 
+let games_view = deepCopy(view);
+games_view.title = 'Games';
+let games_html = mustache.render(games_template, games_view);
+games_view.body = games_html;
+games_html = mustache.render(wrapper_template, games_view);
+
 // Loop through all games to make a different page for each game.
-const games_html = games.map(function (game) {
-    // This is a little more complicated: if a web distribution exists, then it
-    // must be embedded into the page.
+const game_html_list = games.map(function (game) {
     let game_view = deepCopy(view);
     game_view.title = game.name;
     game_view.game = game;
-    if (game.web_dir != null) {
-        const embedded_file_path = path.join(
-            './games/',
-            path.join(
-                game.web_dir,
-                './index.html'));
-        const embedded_html = fs.readFileSync(embedded_file_path, 'utf8');
-        const parse_options = {
-            script: true,
-            style: true,
-            pre: true
-        };
-        const root = html_parser.parse(embedded_html, parse_options);
-        const head_html = root.querySelector('head').toString();
-        const body_html = root.querySelector('body').toString();
-        game_view.embedded = body_html;
-        game_view.scripts += head_html;
-    }
     let game_html = mustache.render(game_template, game_view);
     game_view.body = game_html;
     game_html = mustache.render(wrapper_template, game_view);
@@ -128,6 +118,7 @@ const home_dir = build_dir;
 const about_dir = path.join(home_dir, './about/');
 const games_dir = path.join(home_dir, './games/');
 const downloads_dir = path.join(home_dir, './downloads/');
+const embeds_dir = path.join(home_dir, './embeds/');
 const images_dir = path.join(home_dir, './images/');
 const styles_dir = path.join(home_dir, './styles/');
 if (!fs.existsSync(home_dir)) {
@@ -142,6 +133,9 @@ if (!fs.existsSync(games_dir)) {
 if (!fs.existsSync(downloads_dir)) {
     fs.mkdirSync(downloads_dir);
 }
+if (!fs.existsSync(embeds_dir)) {
+    fs.mkdirSync(embeds_dir);
+}
 if (!fs.existsSync(images_dir)) {
     fs.mkdirSync(images_dir);
 }
@@ -152,24 +146,24 @@ if (!fs.existsSync(styles_dir)) {
 // Write the HTML files to the filesystem.
 fs.writeFileSync(path.join(home_dir, 'index.html'), home_html, 'utf8');
 fs.writeFileSync(path.join(about_dir, 'index.html'), about_html, 'utf8');
+fs.writeFileSync(path.join(games_dir, 'index.html'), games_html, 'utf8');
 games.forEach(function (game, index) {
-    // For each game, if there is a web distribution, then the whole folder must
-    // be copied to the final website (without the old `index.html`).
     const game_dir = path.join(games_dir, game.id);
-    if (game.web_dir != null) {
-        const source_game_dir = path.join('./games/', game.web_dir);
-        copyFolderRecursiveSync(source_game_dir, games_dir);
-        const old_game_dir = path.join(games_dir, game.web_dir);
-        fs.renameSync(old_game_dir, game_dir);
-        const game_index = path.join(game_dir, 'index.html');
-        fs.unlinkSync(game_index);
-    }
-    // Create folder for game if it doesn't already exist.
     if (!fs.existsSync(game_dir)) {
         fs.mkdirSync(game_dir);
     }
+    // For each game, if there is a web distribution, then the whole folder must
+    // be copied to the `embeds` directory.
+    if (game.embed != null) {
+        const source_embed_dir = path.join('./games/', game.embed.dir);
+        const embed_dir = path.join(embeds_dir, game.id);
+        if (!fs.existsSync(embed_dir)) {
+            fs.mkdirSync(embed_dir);
+        }
+        copyFolderContentsRecursiveSync(source_embed_dir, embed_dir);
+    }
     // The game page must be written to the build directory.
-    fs.writeFileSync(path.join(game_dir, 'index.html'), games_html[index], 'utf8');
+    fs.writeFileSync(path.join(game_dir, 'index.html'), game_html_list[index], 'utf8');
     // Copy the downloads associated with the game to the right place.
     game.downloads.forEach(function (download) {
         const file_name = download.file;
@@ -180,6 +174,6 @@ games.forEach(function (game, index) {
 });
 
 // Copy images and styles to the build directory.
-copyFolderRecursiveSync('./images/', home_dir);
-copyFolderRecursiveSync('./styles/', home_dir);
+copyFolderContentsRecursiveSync('./images/', images_dir);
+copyFolderContentsRecursiveSync('./styles/', styles_dir);
 
