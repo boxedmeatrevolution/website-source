@@ -1,0 +1,3 @@
+[submodule "games/one-button-wizard"]
+	path = games/one-button-wizard
+	url = https://github.com/boxedmeatrevolution/one-button-wizard.git
