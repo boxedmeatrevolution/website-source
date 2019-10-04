@@ -1,3 +1,9 @@
 [submodule "games/one-button-wizard"]
 	path = games/one-button-wizard
 	url = https://github.com/boxedmeatrevolution/one-button-wizard.git
+[submodule "games/grease-colosseum"]
+	path = games/grease-colosseum
+	url = https://github.com/boxedmeatrevolution/grease-colosseum.git
+[submodule "games/dr-ectomy"]
+	path = games/dr-ectomy
+	url = https://github.com/boxedmeatrevolution/dr-ectomy.git
