@@ -3,6 +3,7 @@
 const fs = require('fs');
 const mustache = require('mustache');
 const path = require('path');
+const sass = require('sass');
 
 // Some useful utility functions.
 function deepCopy(obj) {
@@ -65,17 +66,17 @@ try {
     developers = JSON.parse(developers);
 }
 catch (error) {
-    const fileName = 'developers.json';
+    const file_name = 'developers.json';
     const message = error.message;
-    throw `Error parsing ${fileName}: ${message}`;
+    throw `Error parsing ${file_name}: ${message}`;
 }
 try {
     games = JSON.parse(games);
 }
 catch (error) {
-    const fileName = 'games.json';
+    const file_name = 'games.json';
     const message = error.message;
-    throw `Error parsing ${fileName}: ${message}`;
+    throw `Error parsing ${file_name}: ${message}`;
 }
 
 // Use templates to build the pages.
@@ -174,7 +175,12 @@ games.forEach(function (game, index) {
     });
 });
 
-// Copy images and styles to the build directory.
+// Compile the main SCSS file. The others will be brought in by it, and
+// everything will be compiled to a single minified stylesheet.
+const style_file = './styles/styles.scss';
+const compiled_styles = sass.renderSync({file: style_file, outputStyle: 'compressed'});
+fs.writeFileSync(path.join(styles_dir, 'styles.css'), compiled_styles.css, 'utf8');
+
+// Copy images to the build directory.
 copyFolderContentsRecursiveSync('./images/', images_dir);
-copyFolderContentsRecursiveSync('./styles/', styles_dir);
 
