@@ -41,7 +41,7 @@ if (process.argv.length !== 3) {
 }
 build_dir = process.argv[2];
 
-// Test that build directory exists and is empty.
+// Test that the build directory exists and is empty.
 if (!fs.existsSync(build_dir)) {
     throw 'Build directory does not exist.';
 }
@@ -152,10 +152,11 @@ games.forEach(function (game, index) {
     if (!fs.existsSync(game_dir)) {
         fs.mkdirSync(game_dir);
     }
+    const game_build_dir = path.join('./games/', game['build-dir']);
     // For each game, if there is a web distribution, then the whole folder must
     // be copied to the `embeds` directory.
     if (game.embed != null) {
-        const source_embed_dir = path.join('./games/', game.embed.dir);
+        const source_embed_dir = path.join(game_build_dir, game.embed.dir);
         const embed_dir = path.join(embeds_dir, game.id);
         if (!fs.existsSync(embed_dir)) {
             fs.mkdirSync(embed_dir);
@@ -167,7 +168,7 @@ games.forEach(function (game, index) {
     // Copy the downloads associated with the game to the right place.
     game.downloads.forEach(function (download) {
         const file_name = download.file;
-        const source_game_file = path.join('./games/', file_name);
+        const source_game_file = path.join(game_build_dir, file_name);
         const target_game_file = path.join(downloads_dir, file_name);
         fs.copyFileSync(source_game_file, target_game_file);
     });
