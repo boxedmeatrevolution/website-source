@@ -1,70 +1,110 @@
 [
   {
-    "id": "spacebank-heist",
-    "name": "Spacebank Heist",
-    "brief": "Brief description of Spacebank Heist.",
-    "instructions": "Instructions.",
-    "embed": null,
+    "id": "dr-ectomy",
+    "name": "Dr. Ectomy",
+    "brief": "You are a surgeon: expert in organ removals, replacements, and rearrangement. Your clientele are strange folk with unique ailments. Survivors of your operations pay top dollar, but one mistake and your reputation will be tarnished. \"Your life is my currency,\" you tell each one as they lie down on the table. Anesthesia takes their consciousness. The last thing they see is you looming above, sharp scissors glistening in your hand...",
+    "instructions": "Your clipboard describes the goal of each operation. Left click once to pick up an organ, and left click again to place it down. Right click (or CTRL) while holding an organ to rotate it. Don't let organs sit on your operating table for too long, or they might die.",
+    "build-dir": "dr-ectomy/build",
+    "embed": {
+      "dir": "dr-ectomy-web/",
+      "resolution": {"width": 1280, "height": 720}
+    },
     "screenshots": [
-      "spacebank-heist1.jpg",
-      "spacebank-heist2.jpg",
-      "spacebank-heist3.jpg"],
+      "dr-ectomy1.png",
+      "dr-ectomy2.png",
+      "dr-ectomy3.png"
+    ],
     "downloads": [
       {
         "platform": "Windows",
-        "file": "spacebank-heist.zip"
+        "file": "dr-ectomy-windows.zip"
+      },
+      {
+        "platform": "Linux",
+        "file": "dr-ectomy-linux.tar"
       }
     ],
-    "jam": "Ludum Dare ??",
-    "theme": "One-screen ??",
-    "date": "??",
-    "source": "https://github.com/boxed-meat-revolution/spacebank-heist",
-    "language": "Game Maker",
-    "developers": ["Duane Byer", "Aidan Mahler", "George Shen", "Stacy Woods"]
+    "jam": "Ludum Dare 44",
+    "theme": "Your life is currency",
+    "date": "April 29, 2019",
+    "source": "https//github.com/boxed-meat-revolution/dr-ectomy",
+    "language": "Unity",
+    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor"]
   },
   {
     "id": "one-button-wizard",
     "name": "One Button Wizard",
     "brief": "You are an all-powerful wizard with mastery over hundreds of elements, but for some reason you only want to use two of them. Create powerful spells by combining the two elements using only a single button. Fight many deadly monsters, each with their own puzzling attack patterns, or fight a friend in a wizard duel!",
     "instructions": "Use the Z key (for player 1) and M key (for player 2) to cast spells using any combination of up to three long and short taps. See the <a href='/images/one-button-wizard-cheat-sheet.png' target='_blank'>wizard cheat sheet</a> for a list of all possible spells.",
+    "build-dir": "one-button-wizard/",
     "embed": {
-      "dir": "one-button-wizard/",
+      "dir": ".",
       "resolution": {"width": 1000, "height": 680}
     },
     "screenshots": [
       "one-button-wizard1.png",
       "one-button-wizard2.png",
-      "one-button-wizard3.png"],
+      "one-button-wizard3.png"
+    ],
     "downloads": [],
     "jam": "Ludum Dare 34", 
     "theme": "Two button controls",
-    "date": "December 11, 2015",
-    "source": "https://github.com/boxedmeatrevolution/OneButtonWizard",
+    "date": "December 14, 2015",
+    "source": "https://github.com/boxedmeatrevolution/one-button-wizard",
     "language": "Processing JS",
     "developers": ["Duane Byer", "Aidan Mahler", "George Shen", "Stacy Woods"]
   },
   {
-    "id": "dr-ectomy",
-    "name": "Dr. Ectomy",
-    "brief": "About Dr. Ectomy.",
-    "instructions": "",
+    "id": "grease-colosseum",
+    "name": "Grease Colosseum",
+    "brief": "The colosseum looms large in the dry desert. Many beasts champion it: gremlins, ninjas, skeletons, robots. Adversaries of spikes! Evils of fire! What can possibly deliver the colosseum from this madness? Something slippery? You come armed. Boots of haste for rapid movement on a slick surface. Let your enemies slide to their dooms. Let them explode into stars of blood. Let them feel the wrath... of grease!",
+    "instructions": "Use WASD or the arrow keys to move around the colosseum. Spray grease using the left mouse button. If enemies are standing on the grease, dash into them with the right mouse button to send them flying into the spiked walls.",
+    "build-dir": "grease-colosseum/",
     "embed": {
-      "dir": "dr-ectomy/",
-      "resolution": {"width": 1000, "height": 680}
+      "dir": ".",
+      "resolution": {"width": 800, "height": 800}
     },
-    "screenshots": ["dr-ectomy1.jpg", "dr-ectomy2.jpg"],
-    "downloads": [
-        {
-            "platform": "Windows",
-            "file": "dr-ectomy.zip"
-        }
+    "screenshots": [
+      "grease-colosseum1.png",
+      "grease-colosseum2.png",
+      "grease-colosseum3.png"
     ],
-    "jam": "Ludum Dare ??",
-    "theme": "Your life is your currency",
-    "date": "??",
-    "source": "https//github.com/boxed-meat-revolution/dr-ectomy",
-    "language": "Unity",
-    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor"]
+    "downloads": [],
+    "jam": "Ludum Dare 32", 
+    "theme": "An unconventional weapon",
+    "date": "April 20, 2015",
+    "source": "https://github.com/boxedmeatrevolution/grease-colosseum",
+    "language": "Processing JS",
+    "developers": ["Duane Byer", "Aidan Mahler", "George Shen", "Stacy Woods"]
+  },
+  {
+    "id": "spacebank-heist",
+    "name": "Spacebank Heist",
+    "brief": "On its opening moment, the Spacebank's designer declared it to be unheistable because of the relativistic time effects of its close orbit around a black hole. Someone did a heist in the very next millisecond, at 2.048791 unified solar time. Since then, the spacebank has been heisted over one billion times, regardless of the number of armed guards, bombs, trap mines, or missile launchers used to defend it. You are the latest heister, ready to make your space fortune, and it would be so embarassing if you were the first one to actually get caught.",
+    "instructions": "Move with WASD or the arrow keys. Shoot with the left mouse button and drop bombs with the right mouse button, but don't escalate too quickly or the cops will show up. Dash away from their bullets with the space bar.",
+    "build-dir": "spacebank-heist/",
+    "embed": null,
+    "screenshots": [
+      "spacebank-heist1.png",
+      "spacebank-heist2.png",
+      "spacebank-heist3.png"
+    ],
+    "downloads": [
+      {
+        "platform": "Windows",
+        "file": "spacebank-heist-windows.zip"
+      },
+      {
+        "platform": "Mac OS X",
+        "file": "spacebank-heist-osx.app.zip"
+      }
+    ],
+    "jam": "Ludum Dare 31",
+    "theme": "Entire game on one screen",
+    "date": "December 8, 2014",
+    "source": null,
+    "language": "Game Maker",
+    "developers": ["Duane Byer", "Aidan Mahler", "George Shen", "Stacy Woods"]
   }
 ]
 
