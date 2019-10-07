@@ -7,3 +7,6 @@
 [submodule "games/dr-ectomy"]
 	path = games/dr-ectomy
 	url = https://github.com/boxedmeatrevolution/dr-ectomy.git
+[submodule "games/void-prisoner"]
+	path = games/void-prisoner
+	url = https://github.com/boxedmeatrevolution/void-prisoner.git

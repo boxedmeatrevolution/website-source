@@ -1,5 +1,27 @@
 [
   {
+    "id": "void-prisoner",
+    "name": "Void Prisoner",
+    "brief": "Monsters come from nothing, and to nothing they return. You are a slave. You will spend an eternity following instructions. Create. Destroy. Net gain: zero. Listen to your lord. And don't disappoint.",
+    "instructions": "Move with the left mouse button. Pick up items with a left click, and drop items with a right click. Combine orbs to summon a variety of different creatures, and throw the creatures back into the void to get your orbs back.",
+    "build-dir": "void-prisoner/build",
+    "embed": {
+      "dir": "void-prisoner-web/",
+      "resolution": {"width": 800, "height": 600}
+    },
+    "screenshots": [
+      "void-prisoner1.png",
+      "void-prisoner2.png"
+    ],
+    "downloads": [],
+    "jam": "Ludum Dare 45",
+    "theme": "Start with nothing",
+    "date": "October 4, 2019",
+    "source": "https://github.com/boxedmeatrevolution/void-prisoner",
+    "language": "Unity",
+    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor", "George Shen"]
+  },
+  {
     "id": "dr-ectomy",
     "name": "Dr. Ectomy",
     "brief": "You are a surgeon: expert in organ removals, replacements, and rearrangement. Your clientele are strange folk with unique ailments. Survivors of your operations pay top dollar, but one mistake and your reputation will be tarnished. \"Your life is my currency,\" you tell each one as they lie down on the table. Anesthesia takes their consciousness. The last thing they see is you looming above, sharp scissors glistening in your hand...",
@@ -27,7 +49,7 @@
     "jam": "Ludum Dare 44",
     "theme": "Your life is currency",
     "date": "April 29, 2019",
-    "source": "https//github.com/boxed-meat-revolution/dr-ectomy",
+    "source": "https//github.com/boxedmeatrevolution/dr-ectomy",
     "language": "Unity",
     "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor"]
   },
