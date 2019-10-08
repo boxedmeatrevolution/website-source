@@ -42,12 +42,9 @@ if (process.argv.length !== 3) {
 }
 build_dir = process.argv[2];
 
-// Test that the build directory exists and is empty.
+// Test that the build directory exists.
 if (!fs.existsSync(build_dir)) {
     throw 'Build directory does not exist.';
-}
-if (fs.readdirSync(build_dir).length != 0) {
-    console.log(`Build directory is not empty. Perhaps you should clean first with \`node clean ${build_dir}\`?`);
 }
 
 // Read the template file.
