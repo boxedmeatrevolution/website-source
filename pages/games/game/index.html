@@ -130,18 +130,28 @@
     <div class="game-brief py-2">{{{game.brief}}}</div>
     <div class="game-instructions py-2">{{{game.instructions}}}</div>
 
-    {{#game.downloads.length}}
     <div class="game-downloads-container">
       <ul>
         {{#game.downloads}}
-        <li><a href="/downloads/{{file}}">{{platform}}</a></li>
+        <li>
+          <a href="/downloads/{{file}}" target="_blank">
+            Download
+            {{#platforms.length}}
+            for
+            <span class="game-download-platforms-container">
+              {{#platforms}}
+                <span class="game-download-platforms-item">{{.}}</span><span class="game-download-platforms-separator">, </span>
+              {{/platforms}}
+            </span>
+            {{/platforms.length}}
+          </a>
+        </li>
         {{/game.downloads}}
+        {{#game.source}}
+        <li><a href={{game.source}} target="_blank">Source code ({{game.language}})</a></li>
+        {{/game.source}}
       </ul>
     </div>
-    {{/game.downloads.length}}
-    {{#game.source}}
-    <p><a href={{game.source}} target="_blank">Source code ({{game.language}})</a></p>
-    {{/game.source}}
   </div>
 </div>
 

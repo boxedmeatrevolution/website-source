@@ -13,16 +13,8 @@
     ],
     "downloads": [
       {
-        "platform": "Windows",
-        "file": "aurora-blades-windows.zip"
-      },
-      {
-        "platform": "Mac OS X",
-        "file": "aurora-blades-osx.zip"
-      },
-      {
-        "platform": "Linux",
-        "file": "aurora-blades-linux.tar"
+        "platforms": ["Windows", "Mac OS X", "Linux"],
+        "file": "aurora-blades-itch.html"
       }
     ],
     "jam": "Game Off 2019",
@@ -71,12 +63,8 @@
     ],
     "downloads": [
       {
-        "platform": "Windows",
-        "file": "dr-ectomy-windows.zip"
-      },
-      {
-        "platform": "Linux",
-        "file": "dr-ectomy-linux.tar"
+        "platforms": ["Windows", "Linux"],
+        "file": "dr-ectomy-itch.html"
       }
     ],
     "jam": "Ludum Dare 44",
@@ -146,12 +134,8 @@
     ],
     "downloads": [
       {
-        "platform": "Windows",
-        "file": "spacebank-heist-windows.zip"
-      },
-      {
-        "platform": "Mac OS X",
-        "file": "spacebank-heist-osx.app.zip"
+        "platforms": ["Windows", "Mac OS X"],
+        "file": "spacebank-heist-itch.html"
       }
     ],
     "jam": "Ludum Dare 31",
