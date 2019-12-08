@@ -1,5 +1,38 @@
 [
   {
+    "id": "aurora-blades",
+    "name": "Aurora Blades",
+    "brief": "No one knows what caused the eternal winter to envelop the entire planet Earth. What people do know is that if you want to go to the corner store to get a loaf of bread, you have to navigate your way through a treacherous ice-field where one wrong step can leave you flat on your back, and once you get to the corner store you find out there isn't any bread because all the crops got frozen over, and furthermore you can't even get to the corner store at all because the rule of law has broken down and there are ice-skating hooligans all over the place, so before long you have to don your own skates and go skating around looking for seeds so you can grow your own bread once all this \"eternal winter\" nonsense blows over.",
+    "instructions": "Move with the arrow keys. Jump with Z, skate with X, and dash with C (by default).",
+    "build-dir": "aurora-blades/build",
+    "embed": null,
+    "screenshots": [
+      "aurora-blades1.png",
+      "aurora-blades2.png",
+      "aurora-blades3.png"
+    ],
+    "downloads": [
+      {
+        "platform": "Windows",
+        "file": "aurora-blades-windows.zip"
+      },
+      {
+        "platform": "Mac OS X",
+        "file": "aurora-blades-osx.zip"
+      },
+      {
+        "platform": "Linux",
+        "file": "aurora-blades-linux.tar"
+      }
+    ],
+    "jam": "Game Off 2019",
+    "theme": "Leaps and bounds",
+    "date": "November, 2019",
+    "source": "https://github.com/boxedmeatrevolution/aurora-blades",
+    "language": "Godot",
+    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor", "George Shen"]
+  },
+  {
     "id": "void-prisoner",
     "name": "Void Prisoner",
     "brief": "Monsters come from nothing, and to nothing they return. You are a slave. You will spend an eternity following instructions. Create. Destroy. Net gain: zero. Listen to your lord. And don't disappoint.",

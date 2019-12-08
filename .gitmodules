@@ -10,3 +10,6 @@
 [submodule "games/void-prisoner"]
 	path = games/void-prisoner
 	url = https://github.com/boxedmeatrevolution/void-prisoner.git
+[submodule "games/aurora-blades"]
+	path = games/aurora-blades
+	url = https://github.com/boxedmeatrevolution/aurora-blades
