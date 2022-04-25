@@ -1,5 +1,75 @@
 [
   {
+    "id": "cardboard-people-on-fire",
+    "name": "Cardboard People on Fire",
+    "brief": "See the cardboard city. See the people catch fire. Listen to the music of the city, or sit by the surf and let the waves wash over you. The flamed ones suffer when on the ground. Extinguish them with your hose if you want. If not they will ascend. You can't win. Any game you imagine is in your head. There is only one truth: cardboard people are on fire.",
+    "instructions": "Move with WASD or the arrow keys. Look around with the mouse. Shoot your water gun by clicking.",
+    "build-dir": "cardboard-people-on-fire/Build",
+    "embed": null,
+    "screenshots": [
+      "cardboard-people-on-fire1.png",
+      "cardboard-people-on-fire2.png",
+      "cardboard-people-on-fire3.png"
+    ],
+    "downloads": [
+      {
+        "platforms": ["Windows", "Mac OS X", "Linux"],
+        "file": "cardboard-people-on-fire-itch.html"
+      }
+    ],
+    "jam": "Ludum Dare 50",
+    "theme": "Delay the inevitable",
+    "date": "April 4, 2022",
+    "source": "https://github.com/boxedmeatrevolution/cardboard-people-on-fire",
+    "language": "Unity",
+    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor", "George Shen"]
+  },
+  {
+    "id": "chesstris",
+    "name": "Chess Hellevator",
+    "brief": "Journey to hell and back as a pawn with an unholy power.",
+    "instructions": "Choose one of three random chess moves each turn. Click all of the elevator buttons to go deeper. Kill an enemy hell-pawn at the same time as clicking a button to get a bonus move. Bonus moves are very important for clearing later levels, so use them wisely.",
+    "build-dir": "chesstris/build",
+    "embed": {
+      "dir": ".",
+      "resolution": {"width": 960, "height": 600}
+    },
+    "screenshots": [
+      "chesstris1.png",
+      "chesstris2.png"
+    ],
+    "downloads": [],
+    "jam": "Ludum Dare 48",
+    "theme": "Deeper and deeper",
+    "date": "April 26, 2021",
+    "source": "https://github.com/boxedmeatrevolution/chesstris",
+    "language": "Godot",
+    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor", "George Shen"]
+  },
+  {
+    "id": "potater-toss",
+    "name": "Potater Toss",
+    "brief": "It’s Pajama Day, and you’re ready to chow down on a yummy potater. Ouch! Ain’t it hot though. Bop that boy ‘till he cools so you can go to munch town. Don’t you EVER let that spicy tot get away from you. You won’t be eating floor potato again.",
+    "instructions": "Move your arms with the mouse. Watch the thermometer to know when your potato is cool enough to eat.",
+    "build-dir": "potater-toss/build",
+    "embed": null,
+    "screenshots": [
+      "potater-toss1.png"
+    ],
+    "downloads": [
+      {
+        "platforms": ["Windows", "Mac OS X", "Linux"],
+        "file": "potater-toss-itch.html"
+      }
+    ],
+    "jam": "Ludum Dare 46",
+    "theme": "Keep it alive",
+    "date": "April 17, 2020",
+    "source": "https://github.com/boxedmeatrevolution/potater-toss",
+    "language": "Godot",
+    "developers": ["Duane Byer", "Aidan Mahler", "Nikole McGregor", "George Shen"]
+  },
+  {
     "id": "aurora-blades",
     "name": "Aurora Blades",
     "brief": "No one knows what caused the eternal winter to envelop the entire planet Earth. What people do know is that if you want to go to the corner store to get a loaf of bread, you have to navigate your way through a treacherous ice-field where one wrong step can leave you flat on your back, and once you get to the corner store you find out there isn't any bread because all the crops got frozen over, and furthermore you can't even get to the corner store at all because the rule of law has broken down and there are ice-skating hooligans all over the place, so before long you have to don your own skates and go skating around looking for seeds so you can grow your own bread once all this \"eternal winter\" nonsense blows over.",

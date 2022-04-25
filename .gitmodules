@@ -13,3 +13,12 @@
 [submodule "games/aurora-blades"]
 	path = games/aurora-blades
 	url = https://github.com/boxedmeatrevolution/aurora-blades
+[submodule "games/potater-toss"]
+	path = games/potater-toss
+	url = https://github.com/boxedmeatrevolution/potater-toss.git
+[submodule "games/chesstris"]
+	path = games/chesstris
+	url = https://github.com/boxedmeatrevolution/chesstris
+[submodule "games/cardboard-people-on-fire"]
+	path = games/cardboard-people-on-fire
+	url = https://github.com/boxedmeatrevolution/cardboard-people-on-fire
