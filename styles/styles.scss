@@ -1,5 +1,9 @@
 @charset 'utf-8';
 
+.flex-even {
+    flex: 1;
+}
+
 .main {
     border-left: 1px solid #e0e0e0;
     border-right: 1px solid #e0e0e0;
@@ -11,7 +15,7 @@
 }
 
 .main-header-logo {
-    font-size: 2.25rem;
+    font-size: 2.00rem;
 }
 
 .main-navbar {
@@ -239,16 +243,20 @@
 
 .developer-website:link {
     color: #202020;
+    text-decoration: none;
 }
 
 .developer-website:visited {
     color: #707070;
+    text-decoration: none;
 }
 
 .developer-website:hover {
+    text-decoration: none;
 }
 
 .developer-website:active {
     color: #707070;
+    text-decoration: none;
 }
 

@@ -27,7 +27,7 @@
   {
     "id": "chesstris",
     "name": "Chess Hellevator",
-    "brief": "Journey to hell and back as a pawn with an unholy power.",
+    "brief": "In chess, the pawns are the first to fall for their king. They are allowed to move forwards only one square at a time, ever closer towards their doom. But what if a pawn could rewrite the rules? What if a pawn could choose its fate? Undertake a journey to hell as a pawn with such an unholy power.",
     "instructions": "Choose one of three random chess moves each turn. Click all of the elevator buttons to go deeper. Kill an enemy hell-pawn at the same time as clicking a button to get a bonus move. Bonus moves are very important for clearing later levels, so use them wisely.",
     "build-dir": "chesstris/build",
     "embed": {
@@ -72,7 +72,7 @@
   {
     "id": "aurora-blades",
     "name": "Aurora Blades",
-    "brief": "No one knows what caused the eternal winter to envelop the entire planet Earth. What people do know is that if you want to go to the corner store to get a loaf of bread, you have to navigate your way through a treacherous ice-field where one wrong step can leave you flat on your back, and once you get to the corner store you find out there isn't any bread because all the crops got frozen over, and furthermore you can't even get to the corner store at all because the rule of law has broken down and there are ice-skating hooligans all over the place, so before long you have to don your own skates and go skating around looking for seeds so you can grow your own bread once all this \"eternal winter\" nonsense blows over.",
+    "brief": "After a kilometer-sized comet hit, the whole earth was covered in slippery-smooth ice. Now if you take one wrong step, you'll end up flat on your back. All the old money became worthless—now momentum is the only currency. Collecting all those old-earth seeds might be the only way to have a future worth living in. You'll do anything. It's not that you won't stop; you can't stop. You don't know how.",
     "instructions": "Move with the arrow keys. Jump with Z, skate with X, and dash with C (by default).",
     "build-dir": "aurora-blades/build",
     "embed": null,
@@ -97,7 +97,7 @@
   {
     "id": "void-prisoner",
     "name": "Void Prisoner",
-    "brief": "Monsters come from nothing, and to nothing they return. You are a slave. You will spend an eternity following instructions. Create. Destroy. Net gain: zero. Listen to your lord. And don't disappoint.",
+    "brief": "Monsters come from nothing, and to nothing they return. You are a thrall. You will spend an eternity following instructions. Create. Destroy. Net gain: zero. Listen to your lord. And don't disappoint.",
     "instructions": "Move with the left mouse button. Pick up items with a left click, and drop items with a right click. Combine orbs to summon a variety of different creatures, and throw the creatures back into the void to get your orbs back.",
     "build-dir": "void-prisoner/build",
     "embed": {
@@ -105,8 +105,8 @@
       "resolution": {"width": 800, "height": 600}
     },
     "screenshots": [
-      "void-prisoner1.png",
-      "void-prisoner2.png"
+      "void-prisoner2.png",
+      "void-prisoner1.png"
     ],
     "downloads": [],
     "jam": "Ludum Dare 45",
@@ -193,7 +193,7 @@
   {
     "id": "spacebank-heist",
     "name": "Spacebank Heist",
-    "brief": "On its opening moment, the Spacebank's designer declared it to be unheistable because of the relativistic time effects of its close orbit around a black hole. Someone did a heist in the very next millisecond, at 2.048791 unified solar time. Since then, the spacebank has been heisted over one billion times, regardless of the number of armed guards, bombs, trap mines, or missile launchers used to defend it. You are the latest heister, ready to make your space fortune, and it would be so embarassing if you were the first one to actually get caught.",
+    "brief": "On its opening moment, the Spacebank's designer declared it to be unheistable because of the relativistic time effects of its close orbit around a black hole. Someone did a heist in the very next millisecond. Since then, the spacebank has been heisted over one billion times, regardless of the number of armed guards, bombs, trap mines, or missile launchers used to defend it. You are the latest heister, ready to make your space fortune, and it would be so embarassing if you were the first one to actually get caught.",
     "instructions": "Move with WASD or the arrow keys. Shoot with the left mouse button and drop bombs with the right mouse button, but don't escalate too quickly or the cops will show up. Dash away from their bullets with the space bar.",
     "build-dir": "spacebank-heist/",
     "embed": null,

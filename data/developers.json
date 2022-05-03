@@ -3,29 +3,28 @@
     "id": "duane-byer",
     "name": "Duane Byer",
     "portrait": "profile-duane.png",
-    "about": "About Duane.",
+    "about": "Duane makes sure that everyone's work comes together to make a finished game. He enjoys adding the little creative touches (mostly wobbles and jiggles) that make a game feel complete.",
     "github": "https://github.com/duanebyer/"
   },
   {
     "id": "aidan-mahler",
     "name": "Aidan Mahler",
     "portrait": "profile-aidan.png",
-    "about": "About Aidan.",
-    "github": "https://github.com/asemahle/",
-    "website": "https://example.com/"
+    "about": "Aidan's thoughtful approach to level/game design means that our games are actually fun to play. He makes sure to advocate for the player in all aspects of design (especially difficulty!). He is wicked good at designing puzzles.",
+    "github": "https://github.com/asemahle/"
   },
   {
     "id": "nikole-mcgregor",
     "name": "Nikole McGregor",
     "portrait": "profile-nikole.png",
-    "about": "About Nikole.",
-    "website": "https://blah.com/"
+    "about": "Nikole's art is either incredibly adorable or horrific, depending who you ask. She brings the weird (and disturbing?) ideas that inspire the whole direction—both artistically and mechanically—of our games.",
+    "website": "https://nikolehidalgo.com/"
   },
   {
     "id": "george-shen",
     "name": "George Shen",
     "portrait": "profile-george.png",
-    "about": "About George.",
+    "about": "George's music makes a game's whole experience suddenly click. He's great at bringing the vibe we need, even if we don't know what it is. He also does our sound design and voice acting, including starring roles as a merlion, plant ogre, and cardboard puppet.",
     "github": "https://github.com/geoys/"
   }
 ]

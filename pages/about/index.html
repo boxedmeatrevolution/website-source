@@ -16,7 +16,7 @@
 
 <div class="d-flex flex-row justify-content-around align-items-start flex-wrap pt-3">
   {{#developers}}
-  <div class="">
+  <div class="d-flex p-3 flex-column flex-even align-items-center">
     <img class="developer-portrait my-2" src="../images/{{portrait}}" alt="Portrait of {{name}}" />
     <div class="developer-name">{{name}}</div>
     <div class="d-flex justify-content-around align-items-center flex-nowrap">
@@ -27,7 +27,7 @@
       {{/github}}
       {{#website}}<a class="developer-website px-2 py-1" href="{{.}}"><img class="pr-1" src="/images/globe-icon.png" height="20.0rem" />website</a>{{/website}}
     </div>
-    <p>{{about}}</p>
+    <div class=""><p>{{about}}</p></div>
   </div>
   {{/developers}}
 </div>
