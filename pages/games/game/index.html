@@ -5,7 +5,9 @@
     <img id="gallery-large-screenshot" class="game-gallery-large-screenshot p-2" src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
     <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
       {{#game.screenshots}}
-      <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
+      <div>
+        <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
+      </div>
       {{/game.screenshots}}
     </div>
   </div>
@@ -72,9 +74,11 @@
 <div class="game-gallery">
   <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
     {{#game.screenshots}}
-    <a href="/images/{{.}}" target="_blank">
-      <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
-    </a>
+    <div>
+      <a href="/images/{{.}}" target="_blank">
+        <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
+      </a>
+    </div>
     {{/game.screenshots}}
   </div>
 </div>
