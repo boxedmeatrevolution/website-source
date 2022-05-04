@@ -54,7 +54,9 @@
     "build-dir": "potater-toss/build",
     "embed": null,
     "screenshots": [
-      "potater-toss1.png"
+      "potater-toss3.png",
+      "potater-toss1.png",
+      "potater-toss2.png"
     ],
     "downloads": [
       {
