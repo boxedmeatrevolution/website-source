@@ -1,15 +1,13 @@
 {{^game.embed}}
 {{#game.screenshots.length}}
-<div class="game-gallery">
-  <div class="d-flex flex-column justify-content-center align-items-center">
-    <img id="gallery-large-screenshot" class="game-gallery-large-screenshot p-2" src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
-    <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
-      {{#game.screenshots}}
-      <div>
-        <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
-      </div>
-      {{/game.screenshots}}
+<div class="gallery-container">
+  <img id="gallery-large-screenshot" class="gallery-large-screenshot" src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+  <div class="gallery-reel-container">
+    {{#game.screenshots}}
+    <div class="gallery-screenshot">
+      <img src="/images/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
     </div>
+    {{/game.screenshots}}
   </div>
 </div>
 <script>
@@ -29,7 +27,7 @@
   .embed-show-if-not {
     display: inline-block;
   }
-  .game-embedded-choose-size {
+  .embed-choose-size {
     max-width: {{resolution.width}}px;
     max-height: {{resolution.height}}px;
     width: auto;
@@ -42,7 +40,7 @@
     .embed-show-if-not {
       display: none;
     }
-    .game-embedded-choose-size {
+    .embed-choose-size {
       min-width: {{resolution.width}}px;
       min-height: {{resolution.height}}px;
       max-width: none;
@@ -50,43 +48,40 @@
     }
   }
 </style>
-
-<div class="d-flex flex-column justify-content-center align-items-center">
-  <div class="game-embedded game-embedded-choose-size p-0 m-4">
-    <div id="game-embedded-iframe" class="game-embedded-iframe"></div>
-    <div id="game-embedded-play-button" class="embed-show-if game-embedded-play-strip">
+<div class="gallery-container">
+  <div class="embed embed-choose-size">
+    <div id="embed-iframe" class="embed-iframe"></div>
+    <div id="embed-play-button" class="embed-show-if embed-play-strip">
       <img src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
-      <button type="button" class="btn btn-default" onclick="loadGame()">
-        <img src="/images/play-triangle.png" />Play game<img src="/images/play-triangle.png" />
+      <button type="button" onclick="loadGame()">
+        <img class="embed-play-button-icon" src="/images/play-triangle.png" />
+          Play game
+        <img class="embed-play-button-icon" src="/images/play-triangle.png" />
       </button>
     </div>
-    <div id="game-embedded-fail-button" class="embed-show-if-not game-embedded-fail-strip">
+    <div id="embed-fail-button" class="embed-show-if-not embed-fail-strip">
       <img src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
-      <button type="button" class="btn btn-default" onclick="loadGame()">
-        <div class="d-flex flex-column">
-          <div class="game-embedded-fail-message">Screen is too small</div>
-          <div class="game-embedded-fail-message-details">click to try playing anyway</div>
+      <button type="button" onclick="loadGame()">
+        <div class="embed-fail-button-message-container">
+          <div class="embed-fail-message">Screen is too small</div>
+          <div class="embed-fail-message-details">click to try playing anyway</div>
         </div>
       </button>
     </div>
   </div>
-</div>
-<div class="game-gallery">
-  <div class="d-flex flex-row justify-content-center align-items-center flex-nowrap">
+  <div class="gallery-reel-container">
     {{#game.screenshots}}
-    <div>
-      <a href="/images/{{.}}" target="_blank">
-        <img class="game-gallery-screenshot flex-grow-1 p-1" src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
-      </a>
-    </div>
+    <a class="gallery-screenshot" href="/images/{{.}}" target="_blank">
+      <img style="width:100%;" src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
+    </a>
     {{/game.screenshots}}
   </div>
 </div>
 <script type="text/javascript">
   function loadGame() {
-    let divRemove = document.getElementById('game-embedded-iframe');
-    let playButton = document.getElementById('game-embedded-play-button');
-    let failStrip = document.getElementById('game-embedded-fail-button');
+    let divRemove = document.getElementById('embed-iframe');
+    let playButton = document.getElementById('embed-play-button');
+    let failStrip = document.getElementById('embed-fail-button');
     let embedParent = divRemove.parentElement;
     playButton.remove();
     failStrip.remove();
@@ -115,45 +110,41 @@
 </script>
 {{/game.embed}}
 
-<div class="d-flex flex-column justify-content-center align-items-center py-3">
-  <div class="game-name-small py-2">{{game.name}}</div>
-  <div class="game-description">
-    {{#game.developers.length}}
-    <div class="game-developers-container">
-      {{#game.developers}}
-      <span class="game-developers-item">{{.}}</span><span class="game-developers-separator">, </span>
-      {{/game.developers}}
-    </div>
-    {{/game.developers.length}}
+<div class="game-container">
+  <div class="game-name">{{game.name}}</div>
+  {{#game.developers.length}}
+  <ul class="game-developers-container">
+    {{#game.developers}}
+    <li class="game-developers-item">{{.}}</li>
+    {{/game.developers}}
+  </ul>
+  {{/game.developers.length}}
 
-    <div class="game-jam-name">{{game.jam}}: {{game.theme}}</div>
-    <div class="game-date">{{game.date}}</div>
+  <div class="game-jam-name">{{game.jam}}: {{game.theme}}</div>
+  <div class="game-date">{{game.date}}</div>
 
-    <div class="game-brief py-2">{{{game.brief}}}</div>
-    <div class="game-instructions py-2">{{{game.instructions}}}</div>
+  <div class="game-brief">{{{game.brief}}}</div>
+  <div class="game-instructions">{{{game.instructions}}}</div>
 
-    <div class="game-downloads-container">
-      <ul>
-        {{#game.downloads}}
-        <li>
-          <a href="/downloads/{{file}}" target="_blank">
-            Download
-            {{#platforms.length}}
-            for
-            <span class="game-download-platforms-container">
-              {{#platforms}}
-                <span class="game-download-platforms-item">{{.}}</span><span class="game-download-platforms-separator">, </span>
-              {{/platforms}}
-            </span>
-            {{/platforms.length}}
-          </a>
-        </li>
-        {{/game.downloads}}
-        {{#game.source}}
-        <li><a href={{game.source}} target="_blank">Source code ({{game.language}})</a></li>
-        {{/game.source}}
-      </ul>
-    </div>
-  </div>
+  <ul class="game-downloads-container">
+    {{#game.downloads}}
+    <li>
+      <a href="/downloads/{{file}}" target="_blank">
+        Download
+        {{#platforms.length}}
+        for
+        <span class="game-download-platforms-container">
+          {{#platforms}}
+            <span class="game-download-platforms-item">{{.}}</span><span class="game-download-platforms-separator">, </span>
+          {{/platforms}}
+        </span>
+        {{/platforms.length}}
+      </a>
+    </li>
+    {{/game.downloads}}
+    {{#game.source}}
+    <li><a href={{game.source}} target="_blank">Source code ({{game.language}})</a></li>
+    {{/game.source}}
+  </ul>
 </div>
 

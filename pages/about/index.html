@@ -4,35 +4,42 @@
   experimenting with every game&mdash;either through gameplay, new development
   tools, or overcoming technological hurdles.
 </p>
-<div class="d-flex flex-row flex-wrap justify-content-center align-items-center pt-2 pb-3 border-bottom">
-  <div class="p-2">
-    <a style="white-space: nowrap;" href="https://github.com/boxedmeatrevolution/">
-      <img src="/images/github-mark.png" height="30.0rem" /><img src="/images/github-logo.png" height="30.0rem" />
+<div class="team-socials-container">
+  <div class="team-socials-item">
+    <a class="link-logo" href="https://github.com/boxedmeatrevolution/">
+      <img src="/images/github-mark.png" height="100%" />
+      <img src="/images/github-logo.png" height="100%" />
     </a>
   </div>
-  <div class="p-2">
-    <a href="https://ldjam.com/users/boxedmeatrevolution/">
-      <img src="/images/ludumdare-logo.png" height="25.0rem" />
+  <div class="team-socials-item">
+    <a class="link-logo" href="https://ldjam.com/users/boxedmeatrevolution/">
+      <img src="/images/ludumdare-logo.png" height="100%" />
     </a>
   </div>
 </div>
 
-<div class="d-flex flex-row justify-content-around align-items-start flex-wrap pt-3">
+<div class="developers-container">
   {{#developers}}
-  <div class="d-flex p-3 flex-column flex-even align-items-center">
-    <div>
-      <img class="developer-portrait my-2" src="../images/{{portrait}}" alt="Portrait of {{name}}" />
-    </div>
+  <div class="developer-container">
+    <img class="developer-portrait" src="../images/{{portrait}}" alt="Portrait of {{name}}" />
     <div class="developer-name">{{name}}</div>
-    <div class="d-flex justify-content-around align-items-center flex-nowrap">
+    <div class="developer-socials-container">
       {{#github}}
-      <a class="px-2 py-1" href="{{.}}">
-        <img src="/images/github-mark.png" height="20.0rem"/><img src="/images/github-logo.png" height="20.0rem" />
-      </a>
+      <div class="developer-socials-item">
+        <a class="link-logo" href="{{.}}">
+          <img src="/images/github-mark.png" height="100%"/><img src="/images/github-logo.png" height="100%" />
+        </a>
+      </div>
       {{/github}}
-      {{#website}}<a class="developer-website px-2 py-1" href="{{.}}"><img class="pr-1" src="/images/globe-icon.png" height="20.0rem" />website</a>{{/website}}
+      {{#website}}
+      <div class="developer-socials-item">
+        <a class="developer-website link-logo" href="{{.}}">
+          <img src="/images/globe-icon.png" height="100%" />website
+        </a>
+      </div>
+      {{/website}}
     </div>
-    <div class=""><p>{{about}}</p></div>
+    <div class="developer-about"><p>{{about}}</p></div>
   </div>
   {{/developers}}
 </div>

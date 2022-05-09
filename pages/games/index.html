@@ -1,19 +1,19 @@
-<div class="games-container container-fluid justify-content-center align-items-start">
+<div class="games-container">
   {{#games}}
-  <div class="games-row row flex-wrap justify-content-center align-items-center">
-    <div class="col-md-6 col-lg-4">
+  <div class="games-row-container">
+    <div class="games-row-screenshot-container">
       <a href="/games/{{id}}/">
-        <img class="games-screenshot p-2" src="/images/{{screenshots.0}}" alt="Screenshot of {{name}}." />
+        <img class="games-row-screenshot" src="/images/{{screenshots.0}}" alt="Screenshot of {{name}}." />
       </a>
     </div>
-    <div class="text-center text-md-left col-md-6 col-lg-8">
-      <a class="games-name" href="/games/{{id}}/">{{name}}</a>
-      <ul class="list-inline">
-        <li class="list-inline-item games-meta">{{jam}}</li>
-        <li class="list-inline-item games-meta">{{theme}}</li>
-        <li class="list-inline-item games-meta">{{date}}</li>
+    <div class="games-row-text-container">
+      <a class="game-name" href="/games/{{id}}/">{{name}}</a>
+      <ul class="game-meta-container">
+        <li class="game-meta-item">{{jam}}</li>
+        <li class="game-meta-item">{{theme}}</li>
+        <li class="game-meta-item">{{date}}</li>
       </ul>
-      <div class="games-brief">{{brief}}</div>
+      <div class="game-brief">{{brief}}</div>
     </div>
   </div>
   {{/games}}

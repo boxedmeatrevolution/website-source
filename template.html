@@ -5,42 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Small video games developed by our team for Ludum Dare and other game jams.">
     <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Boxed Meat Revolution{{#title}} | {{.}}{{/title}}</title>
     {{{scripts}}}
   </head>
   <body>
-    <div class="container px-0 main">
+    <div class="body-container">
       <!-- Title. -->
-      <header class="main-header pt-4 pb-2">
-        <a class="text-decoration-none" href="/">
-          <div class="d-flex flex-row justify-content-center align-items-center">
-            <div>
-              <img class="px-2" src="/images/pig.png" height="65.0rem" />
-            </div>
-            <div class="d-flex flex-column justify-content-center align-items-center">
-              <div class="main-header-logo py-1 text-dark">Boxed Meat Revolution</div>
-              <div class="py-1 text-dark">Tiny games for you to play.</div>
+      <header>
+        <a class="link-logo" href="/">
+          <div class="logo-container">
+            <img class="emblem" src="/images/pig.png" height="65.0rem" />
+            <div class="wordmark-container">
+              <div class="wordmark-name">Boxed Meat Revolution</div>
+              <div class="wordmark-slogan">Tiny games for you to play.</div>
             </div>
           </div>
         </a>
       </header>
       <!-- Navigation. -->
-      <nav class="main-navbar py-0">
-        <div class="d-flex flex-row flex-wrap justify-content-around align-items-start">
-          <a class="flex-grow-1 main-navbar-item text-muted" href="/">Home</a>
-          <a class="flex-grow-1 main-navbar-item text-muted" href="/games/">Games</a>
-          <a class="flex-grow-1 main-navbar-item text-muted" href="/about/">About</a>
+      <nav>
+        <div class="nav-container">
+          <a class="nav-item" href="/">Home</a>
+          <a class="nav-item" href="/games/">Games</a>
+          <a class="nav-item" href="/about/">About</a>
         </div>
       </nav>
-      <!-- Body. -->
-      <main class="p-4">
+      <!-- Main. -->
+      <main>
         {{{body}}}
       </main>
       <!-- Footer. -->
-      <footer class="main-footer">
-        <p>© Copyright 2019 Duane Byer.</p>
-      </footer>
+      <footer>© Copyright 2019 Duane Byer.</footer>
     </div>
   </body>
 </html>
