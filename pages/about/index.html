@@ -5,17 +5,17 @@
   tools, or overcoming technological hurdles.
 </p>
 <div class="team-socials-container">
-  <div class="team-socials-item">
-    <a class="link-logo" href="https://github.com/boxedmeatrevolution/">
+  <a class="link-logo" href="https://github.com/boxedmeatrevolution/">
+    <div class="team-socials-item">
       <img src="/images/github-mark.png" height="100%" />
       <img src="/images/github-logo.png" height="100%" />
-    </a>
-  </div>
-  <div class="team-socials-item">
-    <a class="link-logo" href="https://ldjam.com/users/boxedmeatrevolution/">
+    </div>
+  </a>
+  <a class="link-logo" href="https://ldjam.com/users/boxedmeatrevolution/">
+    <div class="team-socials-item">
       <img src="/images/ludumdare-logo.png" height="100%" />
-    </a>
-  </div>
+    </div>
+  </a>
 </div>
 
 <div class="developers-container">
@@ -25,21 +25,23 @@
     <div class="developer-name">{{name}}</div>
     <div class="developer-socials-container">
       {{#github}}
-      <div class="developer-socials-item">
-        <a class="link-logo" href="{{.}}">
-          <img src="/images/github-mark.png" height="100%"/><img src="/images/github-logo.png" height="100%" />
-        </a>
-      </div>
+      <a class="link-logo" href="{{.}}">
+        <div class="developer-socials-item">
+          <img src="/images/github-mark.png" height="100%" />
+          <img src="/images/github-logo.png" height="100%" />
+        </div>
+      </a>
       {{/github}}
       {{#website}}
-      <div class="developer-socials-item">
-        <a class="developer-website link-logo" href="{{.}}">
-          <img src="/images/globe-icon.png" height="100%" />website
-        </a>
-      </div>
+      <a class="link-logo" href="{{.}}">
+        <div class="developer-socials-item">
+          <img src="/images/globe-icon.png" height="100%" />
+          <div class="developer-socials-item-text">website</div>
+        </div>
+      </a>
       {{/website}}
     </div>
-    <div class="developer-about"><p>{{about}}</p></div>
+    <div class="developer-about">{{about}}</div>
   </div>
   {{/developers}}
 </div>
