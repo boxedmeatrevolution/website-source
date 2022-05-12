@@ -17,13 +17,11 @@ function copyFolderContentsRecursiveSync(source_dir, target_dir) {
             const current_target = path.join(target_dir, file);
             if (fs.lstatSync(current_source).isDirectory()) {
                 copyFolderRecursiveSync(current_source, target_dir);
-            }
-            else {
+            } else {
                 fs.copyFileSync(current_source, current_target);
             }
         });
-    }
-    else {
+    } else {
         throw JSON.stringify(source_dir) + ' is not a directory.';
     }
 }
