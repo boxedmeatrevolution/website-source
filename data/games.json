@@ -7,9 +7,9 @@
     "build-dir": "cardboard-people-on-fire/Build",
     "embed": null,
     "screenshots": [
-      "cardboard-people-on-fire1.png",
-      "cardboard-people-on-fire2.png",
-      "cardboard-people-on-fire3.png"
+      "cardboard-people-on-fire1.jpg",
+      "cardboard-people-on-fire2.jpg",
+      "cardboard-people-on-fire3.jpg"
     ],
     "downloads": [
       {
@@ -35,8 +35,8 @@
       "resolution": {"width": 960, "height": 600}
     },
     "screenshots": [
-      "chesstris1.png",
-      "chesstris2.png"
+      "chesstris1.jpg",
+      "chesstris2.jpg"
     ],
     "downloads": [],
     "jam": "Ludum Dare 48",
@@ -54,9 +54,9 @@
     "build-dir": "potater-toss/build",
     "embed": null,
     "screenshots": [
-      "potater-toss3.png",
-      "potater-toss1.png",
-      "potater-toss2.png"
+      "potater-toss3.jpg",
+      "potater-toss1.jpg",
+      "potater-toss2.jpg"
     ],
     "downloads": [
       {
@@ -79,9 +79,9 @@
     "build-dir": "aurora-blades/build",
     "embed": null,
     "screenshots": [
-      "aurora-blades1.png",
-      "aurora-blades2.png",
-      "aurora-blades3.png"
+      "aurora-blades1.jpg",
+      "aurora-blades2.jpg",
+      "aurora-blades3.jpg"
     ],
     "downloads": [
       {
@@ -107,8 +107,8 @@
       "resolution": {"width": 800, "height": 600}
     },
     "screenshots": [
-      "void-prisoner2.png",
-      "void-prisoner1.png"
+      "void-prisoner2.jpg",
+      "void-prisoner1.jpg"
     ],
     "downloads": [],
     "jam": "Ludum Dare 45",
@@ -129,9 +129,9 @@
       "resolution": {"width": 1280, "height": 720}
     },
     "screenshots": [
-      "dr-ectomy1.png",
-      "dr-ectomy2.png",
-      "dr-ectomy3.png"
+      "dr-ectomy1.jpg",
+      "dr-ectomy2.jpg",
+      "dr-ectomy3.jpg"
     ],
     "downloads": [
       {
@@ -150,16 +150,16 @@
     "id": "one-button-wizard",
     "name": "One Button Wizard",
     "brief": "You are an all-powerful wizard with mastery over hundreds of elements, but for some reason you only want to use two of them. Create powerful spells by combining the two elements using only a single button. Fight many deadly monsters, each with their own puzzling attack patterns, or fight a friend in a wizard duel!",
-    "instructions": "Use the Z key (for player 1) and M key (for player 2) to cast spells using any combination of up to three long and short taps. See the <a href='/images/one-button-wizard-cheat-sheet.png' target='_blank'>wizard cheat sheet</a> for a list of all possible spells.",
+    "instructions": "Use the Z key (for player 1) and M key (for player 2) to cast spells using any combination of up to three long and short taps. See the <a href='/images/screenshots/one-button-wizard-cheat-sheet.jpg' target='_blank'>wizard cheat sheet</a> for a list of all possible spells.",
     "build-dir": "one-button-wizard/",
     "embed": {
       "dir": ".",
       "resolution": {"width": 1000, "height": 680}
     },
     "screenshots": [
-      "one-button-wizard1.png",
-      "one-button-wizard2.png",
-      "one-button-wizard3.png"
+      "one-button-wizard1.jpg",
+      "one-button-wizard2.jpg",
+      "one-button-wizard3.jpg"
     ],
     "downloads": [],
     "jam": "Ludum Dare 34", 
@@ -180,9 +180,9 @@
       "resolution": {"width": 800, "height": 800}
     },
     "screenshots": [
-      "grease-colosseum1.png",
-      "grease-colosseum2.png",
-      "grease-colosseum3.png"
+      "grease-colosseum1.jpg",
+      "grease-colosseum2.jpg",
+      "grease-colosseum3.jpg"
     ],
     "downloads": [],
     "jam": "Ludum Dare 32", 
@@ -200,9 +200,9 @@
     "build-dir": "spacebank-heist/",
     "embed": null,
     "screenshots": [
-      "spacebank-heist1.png",
-      "spacebank-heist2.png",
-      "spacebank-heist3.png"
+      "spacebank-heist1.jpg",
+      "spacebank-heist2.jpg",
+      "spacebank-heist3.jpg"
     ],
     "downloads": [
       {

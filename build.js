@@ -1,74 +1,95 @@
 // Build script for the website.
 
-const fs = require('fs');
-const mustache = require('mustache');
-const path = require('path');
-const sass = require('sass');
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+import mustache from 'mustache';
+import sass from 'sass';
+import sharp from 'sharp';
 
 // Some useful utility functions.
 function deepCopy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
-function copyFolderContentsRecursiveSync(source_dir, target_dir) {
-    if (fs.lstatSync(source_dir).isDirectory()) {
-        fs.readdirSync(source_dir).forEach(function (file) {
+async function copyImage(source, target, extension, dimensions=undefined) {
+    const target_basename = path.basename(target, path.extname(target));
+    const target_dir = path.dirname(target);
+    const target_new = path.join(target_dir, target_basename + extension);
+    try {
+        if (dimensions === undefined) {
+            await sharp(source).toFile(target_new);
+        } else {
+            await sharp(source)
+                .resize({ width: dimensions.width, height: dimensions.height })
+                .toFile(target_new);
+        }
+    } catch (error) {
+        const message = error.message;
+        throw `Error copying image ${source}: ${message}`;
+    }
+}
+
+async function copyFolderContentsRecursive(source_dir, target_dir, copy_func=fs.copyFile) {
+    if ((await fs.lstat(source_dir)).isDirectory()) {
+        await Promise.all((await fs.readdir(source_dir)).map(async (file) => {
             const current_source = path.join(source_dir, file);
             const current_target = path.join(target_dir, file);
-            if (fs.lstatSync(current_source).isDirectory()) {
-                copyFolderRecursiveSync(current_source, target_dir);
+            if ((await fs.lstat(current_source)).isDirectory()) {
+                await copyFolderRecursive(current_source, target_dir);
             } else {
-                fs.copyFileSync(current_source, current_target);
+                await copy_func(current_source, current_target);
             }
-        });
+        }));
     } else {
         throw JSON.stringify(source_dir) + ' is not a directory.';
     }
 }
 
-function copyFolderRecursiveSync(source_dir, target_dir) {
+async function copyFolderRecursive(source_dir, target_dir, copy_func=fs.copyFile) {
     const new_target_dir = path.join(target_dir, path.basename(source_dir));
-    if (!fs.existsSync(new_target_dir)) {
-        fs.mkdirSync(new_target_dir);
-    }
-    copyFolderContentsRecursiveSync(source_dir, new_target_dir);
+    await fs.mkdir(new_target_dir, { recursive: true });
+    await copyFolderContentsRecursive(source_dir, new_target_dir, copy_func);
 }
 
 // Load command line arguments.
 if (process.argv.length !== 3) {
     throw 'Unexpected number of command line arguments (expected 1).';
 }
-build_dir = process.argv[2];
+const build_dir = process.argv[2];
 
 // Test that the build directory exists.
-if (!fs.existsSync(build_dir)) {
+if (!(await fs.lstat(build_dir)).isDirectory()) {
     throw 'Build directory does not exist.';
 }
 
 // Read the template file.
-const wrapper_template = fs.readFileSync('./template.html', 'utf8');
+let wrapper_template = fs.readFile('./template.html', 'utf8');
 
 // Read the pages.
-const home_template = fs.readFileSync('./pages/index.html', 'utf8');
-const about_template = fs.readFileSync('./pages/about/index.html', 'utf8');
-const games_template = fs.readFileSync('./pages/games/index.html', 'utf8');
-const game_template = fs.readFileSync('./pages/games/game/index.html', 'utf8');
+let home_template = fs.readFile('./pages/index.html', 'utf8');
+let about_template = fs.readFile('./pages/about/index.html', 'utf8');
+let games_template = fs.readFile('./pages/games/index.html', 'utf8');
+let game_template = fs.readFile('./pages/games/game/index.html', 'utf8');
 
 // Read the data which will populate the pages.
-let developers = fs.readFileSync('./data/developers.json', 'utf8');
-let games = fs.readFileSync('./data/games.json', 'utf8');
+let developers = fs.readFile('./data/developers.json', 'utf8');
+let games = fs.readFile('./data/games.json', 'utf8');
+
+// Execute.
+[ wrapper_template, home_template, about_template, games_template, game_template, developers, games ] = await Promise.all([ wrapper_template, home_template, about_template, games_template, game_template, developers, games ]);
+
+// Parse JSON.
 try {
     developers = JSON.parse(developers);
-}
-catch (error) {
+} catch (error) {
     const file_name = 'developers.json';
     const message = error.message;
     throw `Error parsing ${file_name}: ${message}`;
 }
 try {
     games = JSON.parse(games);
-}
-catch (error) {
+} catch (error) {
     const file_name = 'games.json';
     const message = error.message;
     throw `Error parsing ${file_name}: ${message}`;
@@ -99,7 +120,7 @@ games_view.body = games_html;
 games_html = mustache.render(wrapper_template, games_view);
 
 // Loop through all games to make a different page for each game.
-const game_html_list = games.map(function (game) {
+const game_html_list = games.map((game) => {
     let game_view = deepCopy(view);
     game_view.title = game.name;
     game_view.game = game;
@@ -115,67 +136,78 @@ const about_dir = path.join(home_dir, './about/');
 const games_dir = path.join(home_dir, './games/');
 const downloads_dir = path.join(home_dir, './downloads/');
 const embeds_dir = path.join(home_dir, './embeds/');
-const images_dir = path.join(home_dir, './images/');
 const styles_dir = path.join(home_dir, './styles/');
-if (!fs.existsSync(home_dir)) {
-    fs.mkdirSync(home_dir);
-}
-if (!fs.existsSync(about_dir)) {
-    fs.mkdirSync(about_dir);
-}
-if (!fs.existsSync(games_dir)) {
-    fs.mkdirSync(games_dir);
-}
-if (!fs.existsSync(downloads_dir)) {
-    fs.mkdirSync(downloads_dir);
-}
-if (!fs.existsSync(embeds_dir)) {
-    fs.mkdirSync(embeds_dir);
-}
-if (!fs.existsSync(images_dir)) {
-    fs.mkdirSync(images_dir);
-}
-if (!fs.existsSync(styles_dir)) {
-    fs.mkdirSync(styles_dir);
-}
+const images_dir = path.join(home_dir, './images/');
+const screenshots_dir = path.join(images_dir, './screenshots/');
+const portraits_dir = path.join(images_dir, './portraits/');
+const logos_dir = path.join(images_dir, './logos/');
+
+await fs.mkdir(home_dir, { recursive: true });
+await Promise.all([
+    fs.mkdir(about_dir, { recursive: true }),
+    fs.mkdir(games_dir, { recursive: true }),
+    fs.mkdir(downloads_dir, { recursive: true }),
+    fs.mkdir(embeds_dir, { recursive: true }),
+    fs.mkdir(styles_dir, { recursive: true }),
+    fs.mkdir(images_dir, { recursive: true })]);
+await Promise.all([
+    fs.mkdir(screenshots_dir, { recursive: true }),
+    fs.mkdir(portraits_dir, { recursive: true }),
+    fs.mkdir(logos_dir, { recursive: true })]);
 
 // Write the HTML files to the filesystem.
-fs.writeFileSync(path.join(home_dir, 'index.html'), home_html, 'utf8');
-fs.writeFileSync(path.join(about_dir, 'index.html'), about_html, 'utf8');
-fs.writeFileSync(path.join(games_dir, 'index.html'), games_html, 'utf8');
-games.forEach(function (game, index) {
-    const game_dir = path.join(games_dir, game.id);
-    if (!fs.existsSync(game_dir)) {
-        fs.mkdirSync(game_dir);
-    }
-    const game_build_dir = path.join('./games/', game['build-dir']);
-    // For each game, if there is a web distribution, then the whole folder must
-    // be copied to the `embeds` directory.
-    if (game.embed != null) {
-        const source_embed_dir = path.join(game_build_dir, game.embed.dir);
-        const embed_dir = path.join(embeds_dir, game.id);
-        if (!fs.existsSync(embed_dir)) {
-            fs.mkdirSync(embed_dir);
+const write_html = await Promise.all([
+    fs.writeFile(path.join(home_dir, 'index.html'), home_html, 'utf8'),
+    fs.writeFile(path.join(about_dir, 'index.html'), about_html, 'utf8'),
+    fs.writeFile(path.join(games_dir, 'index.html'), games_html, 'utf8')]
+    .concat(games.map(async (game, index) => {
+        const game_dir = path.join(games_dir, game.id);
+        await fs.mkdir(game_dir, { recursive: true });
+        const game_build_dir = path.join('./games/', game['build-dir']);
+        // For each game, if there is a web distribution, then the whole folder
+        // must be copied to the `embeds` directory.
+        let write_embed = Promise.resolve();
+        if (game.embed != null) {
+            const source_embed_dir = path.join(game_build_dir, game.embed.dir);
+            const embed_dir = path.join(embeds_dir, game.id);
+            await fs.mkdir(embed_dir, { recursive: true });
+            write_embed = copyFolderContentsRecursive(source_embed_dir, embed_dir);
         }
-        copyFolderContentsRecursiveSync(source_embed_dir, embed_dir);
-    }
-    // The game page must be written to the build directory.
-    fs.writeFileSync(path.join(game_dir, 'index.html'), game_html_list[index], 'utf8');
-    // Copy the downloads associated with the game to the right place.
-    game.downloads.forEach(function (download) {
-        const file_name = download.file;
-        const source_game_file = path.join(game_build_dir, file_name);
-        const target_game_file = path.join(downloads_dir, file_name);
-        fs.copyFileSync(source_game_file, target_game_file);
-    });
-});
+        // The game page must be written to the build directory.
+        const write_game_html = fs.writeFile(path.join(game_dir, 'index.html'), game_html_list[index], 'utf8');
+        // Copy the downloads associated with the game to the right place.
+        const write_downloads = Promise.all(game.downloads.map(async (download) => {
+            const file_name = download.file;
+            const source_game_file = path.join(game_build_dir, file_name);
+            const target_game_file = path.join(downloads_dir, file_name);
+            await fs.copyFile(source_game_file, target_game_file);
+        }));
+        await Promise.all([ write_embed, write_game_html, write_downloads ]);
+    })));
 
 // Compile the main SCSS file. The others will be brought in by it, and
 // everything will be compiled to a single minified stylesheet.
 const style_file = './styles/styles.scss';
+// TODO: use asynchronous SASS rendering.
 const compiled_styles = sass.renderSync({file: style_file, outputStyle: 'compressed'});
-fs.writeFileSync(path.join(styles_dir, 'styles.css'), compiled_styles.css, 'utf8');
+const write_styles = fs.writeFile(path.join(styles_dir, 'styles.css'), compiled_styles.css, 'utf8');
 
 // Copy images to the build directory.
-copyFolderContentsRecursiveSync('./images/', images_dir);
+//await copyFolderContentsRecursive('./images/', images_dir);
+const write_images = Promise.all([
+    fs.copyFile('./images/favicon.ico', path.join(images_dir, 'favicon.ico')),
+    copyFolderContentsRecursive(
+        './images/screenshots/',
+        screenshots_dir,
+        (source, target_dir) => copyImage(source, target_dir, '.jpg', { width: 1024, height: 768 })),
+    copyFolderContentsRecursive(
+        './images/portraits/',
+        portraits_dir,
+        (source, target_dir) => copyImage(source, target_dir, '.jpg', { width: 512, height: 512 })),
+    copyFolderContentsRecursive(
+        './images/logos/',
+        logos_dir,
+        (source, target_dir) => copyImage(source, target_dir, '.png'))]);
+
+await Promise.all([ write_html, write_styles, write_images ]);
 

@@ -1,5 +1,6 @@
 {
   "name": "boxed_meat_revolution",
+  "type": "module",
   "version": "0.0.0",
   "description": "Website for Boxed Meat Revolution.",
   "main": "app.js",
@@ -10,7 +11,8 @@
   "dependencies": {
     "mustache": "~3.0.0",
     "path": "~0.12.7",
-    "sass": "~1.23.0"
+    "sass": "~1.23.0",
+    "sharp": "~0.30.4"
   },
   "author": "Duane Byer",
   "license": "UNLICENSED"
