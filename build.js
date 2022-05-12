@@ -199,7 +199,7 @@ const write_images = Promise.all([
     copyFolderContentsRecursive(
         './images/screenshots/',
         screenshots_dir,
-        (source, target_dir) => copyImage(source, target_dir, '.jpg', { width: 1024, height: 768 })),
+        (source, target_dir) => copyImage(source, target_dir, '.jpg', { width: 1024, height: 640 })),
     copyFolderContentsRecursive(
         './images/portraits/',
         portraits_dir,
