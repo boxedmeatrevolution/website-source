@@ -1,11 +1,11 @@
 {{^game.embed}}
 {{#game.screenshots.length}}
 <div class="gallery-container">
-  <img id="gallery-large-screenshot" class="gallery-large-screenshot" src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+  <img id="gallery-large-screenshot" class="gallery-large-screenshot" src="/images/screenshots/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
   <div id="gallery-reel-container" class="gallery-reel-container">
     {{#game.screenshots}}
     <div class="gallery-screenshot">
-      <img src="/images/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
+      <img src="/images/screenshots/{{.}}" alt="Screenshot of {{game.name}}." onclick="gameGalleryClickHandler(event)" />
     </div>
     {{/game.screenshots}}
   </div>
@@ -65,15 +65,17 @@
   <div class="embed embed-choose-size">
     <div id="embed-iframe" class="embed-iframe"></div>
     <div id="embed-play-button" class="embed-show-if embed-play-strip">
-      <img src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+      <img src="/images/screenshots/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
       <button class="embed-play-button" type="button" onclick="loadGame()">
-        <img class="embed-play-button-icon" src="/images/play-triangle.png" />
+        <!--<img class="embed-play-button-icon" src="/images/symbols/play-triangle.png" />-->
+        <div class="embed-play-triangle"></div>
         <div class="embed-play-button-text">Play game</div>
-        <img class="embed-play-button-icon" src="/images/play-triangle.png" />
+        <div class="embed-play-triangle"></div>
+        <!--<img class="embed-play-button-icon" src="/images/symbols/play-triangle.png" />-->
       </button>
     </div>
     <div id="embed-fail-button" class="embed-show-if-not embed-fail-strip">
-      <img src="/images/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
+      <img src="/images/screenshots/{{game.screenshots.0}}" alt="Screenshot of {{game.name}}." />
       <button class="embed-fail-button" type="button" onclick="loadGame()">
         <div class="embed-fail-message">Screen is too small</div>
         <div class="embed-fail-message-details">click to try playing anyway</div>
@@ -82,8 +84,8 @@
   </div>
   <div class="gallery-reel-container">
     {{#game.screenshots}}
-    <a class="gallery-screenshot" href="/images/{{.}}" target="_blank">
-      <img style="width:100%;" src="/images/{{.}}" alt="Screenshot of {{game.name}}." />
+    <a class="gallery-screenshot" href="/images/screenshots/{{.}}" target="_blank">
+      <img style="width:100%;" src="/images/screenshots/{{.}}" alt="Screenshot of {{game.name}}." />
     </a>
     {{/game.screenshots}}
   </div>

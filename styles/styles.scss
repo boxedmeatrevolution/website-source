@@ -1,5 +1,7 @@
 @charset 'utf-8';
 
+$sqrt-3: 1.73205080757;
+
 $breakpoint-sm: 36rem;
 $breakpoint-md: 48rem;
 $breakpoint-lg: 62rem;
@@ -505,6 +507,16 @@ li.game-developers-item {
     height: 80%;
     padding: 0 2rem;
     margin: 0;
+}
+
+.embed-play-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 1.5rem 0 1.5rem 1.5rem*$sqrt-3;
+    border-color: transparent transparent transparent white;
+    padding: 0;
+    margin: 0 1.5rem;
 }
 
 .embed-play-button-text {
